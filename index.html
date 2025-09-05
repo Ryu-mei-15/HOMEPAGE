@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yamaguchi Miyu | Portfolio</title>
+  <meta name="description" content="情報学・インタラクション・音楽情報処理・VR/ARの研究と作品を紹介する個人サイト。" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020;        /* 背景濃紺 */
+      --card: #111a33;      /* カード紺 */
+      --muted: #8aa0c6;     /* 説明文 */
+      --text: #e6eefc;      /* 文字 */
+      --accent: #60a5fa;    /* アクセント(青) */
+      --accent2: #34d399;   /* アクセント(緑) */
+      --ring: rgba(96,165,250,.5);
+      --border: #24314e;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+      background: radial-gradient(1200px 800px at 15% 10%, #142449 0%, rgba(20,36,73,0) 60%),
+                  radial-gradient(900px 600px at 85% 0%, #10305a 0%, rgba(16,48,90,0) 60%), var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    /* ヘッダー */
+    header { position: sticky; top: 0; backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(11,16,32,0.9), rgba(11,16,32,0.4)); border-bottom: 1px solid var(--border); z-index: 50; }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px; }
+    .logo { width:28px; height:28px; border-radius:8px; background: linear-gradient(135deg, var(--accent), var(--accent2)); display:grid; place-items:center; color:#0b1020; font-weight:900; }
+    .menu { display:flex; gap:18px; align-items:center; }
+    .menu a { color: #d7e6ff; font-weight:600; opacity:.9; }
+    .menu a:hover { opacity:1; }
+    .btn{ display:inline-block; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:#0e1730; font-weight:700; }
+    .btn:hover{ box-shadow:0 0 0 4px var(--ring); text-decoration:none; }
+    .toggle{ display:none; }
+
+    /* ヒーロー */
+    .hero{ padding: 72px 0 40px; display:grid; gap:18px; }
+    .title{ font-size: clamp(28px, 4vw, 48px); line-height:1.1; font-weight:800; letter-spacing:.3px; }
+    .subtitle{ color: var(--muted); font-size: clamp(14px, 1.6vw, 18px); max-width: 68ch; }
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; }
+    .chip{ padding:8px 12px; border:1px solid var(--border); border-radius:999px; background: #0c1732; font-size:13px; color:#cfe2ff; }
+
+    /* セクション共通 */
+    section { padding: 24px 0 8px; }
+    h2 { font-size: 22px; margin: 28px 0 12px; }
+    p.lead { color: var(--muted); }
+    .grid{ display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); }
+    .card{ grid-column: span 12; background: linear-gradient(180deg, #0e1730, #0b132a); border:1px solid var(--border); border-radius:16px; padding:16px; }
+    .card h3{ margin:4px 0 6px; font-size:18px; }
+    .meta{ color:#a9b9d8; font-size:13px; }
+    .card p{ color:#d6e6ff; }
+    .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+    .tag{ font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:#cfe2ff; background:#0c1732; }
+
+    /* 2列/3列レスポンシブ */
+    @media (min-width: 720px){
+      .card.span-6{ grid-column: span 6; }
+      .card.span-4{ grid-column: span 4; }
+    }
+
+    /* フッター */
+    footer{ margin: 40px 0 24px; color:#9ab0d6; font-size:13px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .links{ display:flex; gap:14px; flex-wrap:wrap; }
+
+    /* モバイルメニュー */
+    @media (max-width: 720px){
+      .menu{ display:none; }
+      .toggle{ display:inline-flex; align-items:center; gap:8px; }
+      #drawer{ position:fixed; inset:0 0 auto auto; width:min(80vw,320px); height:100dvh; background:#0e1730; border-left:1px solid var(--border); transform:translateX(100%); transition:.25s ease; padding:20px; z-index:60; }
+      #drawer.open{ transform:translateX(0); }
+      #drawer a{ display:block; padding:12px 4px; font-weight:700; color:#d7e6ff; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo">M</div>
+        <span>MIYU / Portfolio</span>
+      </div>
+      <nav class="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#music">Music/VR</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="#" download>CV</a>
+      </nav>
+      <button class="toggle btn" aria-controls="drawer" aria-expanded="false" id="openMenu">メニュー</button>
+    </div>
+  </header>
+
+  <aside id="drawer" aria-hidden="true">
+    <a href="#about" onclick="closeDrawer()">About</a>
+    <a href="#projects" onclick="closeDrawer()">Projects</a>
+    <a href="#research" onclick="closeDrawer()">Research</a>
+    <a href="#music" onclick="closeDrawer()">Music/VR</a>
+    <a href="#contact" onclick="closeDrawer()">Contact</a>
+    <a href="#" onclick="closeDrawer()">CV</a>
+  </aside>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="site-title">
+      <h1 id="site-title" class="title">山口 瑞悠 / Yamaguchi Miyu</h1>
+      <p class="subtitle">福知山公立大学 情報学部。インタラクション、音楽情報処理、VR/AR、野球×VRトレーニングの研究と制作。学会発表・プロジェクト・作品をここに集約します。</p>
+      <div class="chips" role="list">
+        <span class="chip" role="listitem"># Interaction</span>
+        <span class="chip" role="listitem"># Music & MIR</span>
+        <span class="chip" role="listitem"># VR/AR</span>
+        <span class="chip" role="listitem"># Baseball Analytics</span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-h">
+      <h2 id="about-h">About</h2>
+      <p class="lead">インタラクション系の大学研究者を志向し、国際会議への採択を目標に研究・制作を進めています。最近は <strong>捕手体験VR（CatcherX）</strong>、<strong>MIDIリアルタイム可視化（LuVoX）</strong>、<strong>音楽オンセット同期生成</strong> などに注力中。</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-h">
+      <h2 id="projects-h">Projects</h2>
+      <div class="grid">
+        <article class="card span-6">
+          <h3>CatcherX — VR Catcher Training</h3>
+          <div class="meta">Unity / XR Interaction / 物理シミュレーション / 2025-</div>
+          <p>投球軌道の物理再現、捕球動作入力、触覚・視覚フィードバックを備えた捕手体験。球種・球速・回転をパラメタ化し、緊張感のある実装を追求。</p>
+          <div class="tags"><span class="tag">Unity</span><span class="tag">VR</span><span class="tag">Physics</span><span class="tag">Haptics</span></div>
+        </article>
+        <article class="card span-6">
+          <h3>LuVoX — Real‑Time MIDI → Visuals</h3>
+          <div class="meta">MIDI / GLSL / Python Librosa（準備） / 2025-</div>
+          <p>入力MIDIに反応して映像を合成するパフォーマンス志向のシステム。オンセット解析や鍵盤生成ロジックとも連携予定。</p>
+          <div class="tags"><span class="tag">MIDI</span><span class="tag">Real‑time</span><span class="tag">Visual</span></div>
+        </article>
+        <article class="card span-6">
+          <h3>Marble Animation — Onset‑Synced Keys</h3>
+          <div class="meta">Python / Pygame / Librosa / 2024-</div>
+          <p>音楽のonset_attackを元に、スフィアと鍵盤の生成・接触タイミングを制御。外部JSONから正確な時刻列を読み取り、視覚表現を発展。</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Librosa</span><span class="tag">Pygame</span></div>
+        </article>
+        <article class="card span-6">
+          <h3>Baseball Analytics & VR Visualization</h3>
+          <div class="meta">R / Python / Unity / 2023-</div>
+          <p>投球のリリース〜捕球時間、マグヌス力・回転ベクトル、球種別到達時間のモデリングと可視化。VR訓練系との統合を志向。</p>
+          <div class="tags"><span class="tag">R</span><span class="tag">Unity</span><span class="tag">Data Viz</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research" aria-labelledby="research-h">
+      <h2 id="research-h">Research</h2>
+      <div class="grid">
+        <article class="card span-4">
+          <h3>論文/発表</h3>
+          <p>国内外の学会・シンポジウムへの投稿・登壇情報を掲載予定。<br>例）IPSJ EC2025、Interaction、他</p>
+        </article>
+        <article class="card span-4">
+          <h3>ポスター/スライド</h3>
+          <p>各プロジェクトのポスターPDF・登壇スライドへのリンクをまとめます。</p>
+        </article>
+        <article class="card span-4">
+          <h3>データ/コード</h3>
+          <p>GitHub・実験データ・再現手順へのリンクを整理。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- MUSIC / VR -->
+    <section id="music" aria-labelledby="music-h">
+      <h2 id="music-h">Music / VR</h2>
+      <div class="grid">
+        <article class="card span-6">
+          <h3>Real‑time Performance</h3>
+          <p>鍵盤/コントローラ演奏に合わせた映像演出。MIDIコントロールチェンジでパラメータを操作。</p>
+        </article>
+        <article class="card span-6">
+          <h3>Onset‑Driven Generation</h3>
+          <p>Librosa解析結果（JSON）をUnityへ供給し、生成タイミングを同期。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <p class="lead">ご連絡はメール、またはSNSのDMへどうぞ。</p>
+      <div class="grid">
+        <article class="card span-6">
+          <h3>Links</h3>
+          <ul>
+            <li>Mail: <a href="mailto:example@example.com">example@example.com</a></li>
+            <li>GitHub: <a href="#" rel="me">github.com/yourname</a></li>
+            <li>X(Twitter): <a href="#" rel="me">@yourhandle</a></li>
+          </ul>
+        </article>
+        <article class="card span-6">
+          <h3>メッセージ</h3>
+          <form onsubmit="event.preventDefault(); alert('送信機能は未実装です。フォーム送信先を設定してください。');">
+            <label>お名前<br><input required placeholder="山口 瑞悠" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0c1732;color:var(--text);"></label>
+            <br><br>
+            <label>メール<br><input type="email" required placeholder="you@example.com" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0c1732;color:var(--text);"></label>
+            <br><br>
+            <label>内容<br><textarea required rows="4" placeholder="お問い合わせ内容" style="width:100%;padding:10px;border-radius:12px;border:1px solid var(--border);background:#0c1732;color:var(--text);"></textarea></label>
+            <br><br>
+            <button class="btn" type="submit">送信</button>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Yamaguchi Miyu</div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#music">Music/VR</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // 年号
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // ドロワー
+    const drawer = document.getElementById('drawer');
+    const openBtn = document.getElementById('openMenu');
+    function closeDrawer(){ drawer.classList.remove('open'); openBtn.setAttribute('aria-expanded','false'); drawer.setAttribute('aria-hidden','true'); }
+    openBtn.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('open');
+      openBtn.setAttribute('aria-expanded', String(isOpen));
+      drawer.setAttribute('aria-hidden', String(!isOpen));
+    });
+    window.closeDrawer = closeDrawer;
+  </script>
+</body>
+</html>

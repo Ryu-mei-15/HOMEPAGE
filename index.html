@@ -12,12 +12,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #0b1020;        /* 背景濃紺 */
-      --card: #111a33;      /* カード紺 */
-      --muted: #8aa0c6;     /* 説明文 */
-      --text: #e6eefc;      /* 文字 */
-      --accent: #60a5fa;    /* アクセント(青) */
-      --accent2: #34d399;   /* アクセント(緑) */
+      --bg: #0b1020;
+      --card: #111a33;
+      --muted: #8aa0c6;
+      --text: #e6eefc;
+      --accent: #60a5fa;
+      --accent2: #34d399;
       --ring: rgba(96,165,250,.5);
       --border: #24314e;
     }
@@ -32,7 +32,6 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
-    /* ヘッダー */
     header { position: sticky; top: 0; backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(11,16,32,0.9), rgba(11,16,32,0.4)); border-bottom: 1px solid var(--border); z-index: 50; }
     .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; }
     .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px; }
@@ -44,36 +43,19 @@
     .btn:hover{ box-shadow:0 0 0 4px var(--ring); text-decoration:none; }
     .toggle{ display:none; }
 
-    /* ヒーロー */
     .hero{ padding: 72px 0 40px; display:grid; gap:18px; }
     .title{ font-size: clamp(28px, 4vw, 48px); line-height:1.1; font-weight:800; letter-spacing:.3px; }
     .subtitle{ color: var(--muted); font-size: clamp(14px, 1.6vw, 18px); max-width: 68ch; }
     .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; }
     .chip{ padding:8px 12px; border:1px solid var(--border); border-radius:999px; background: #0c1732; font-size:13px; color:#cfe2ff; }
 
-    /* セクション共通 */
     section { padding: 24px 0 8px; }
     h2 { font-size: 22px; margin: 28px 0 12px; }
     p.lead { color: var(--muted); }
-    .grid{ display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); }
-    .card{ grid-column: span 12; background: linear-gradient(180deg, #0e1730, #0b132a); border:1px solid var(--border); border-radius:16px; padding:16px; }
+    .card{ background: linear-gradient(180deg, #0e1730, #0b132a); border:1px solid var(--border); border-radius:16px; padding:16px; margin-bottom:20px; }
     .card h3{ margin:4px 0 6px; font-size:18px; }
     .meta{ color:#a9b9d8; font-size:13px; }
-    .card p{ color:#d6e6ff; }
-    .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
-    .tag{ font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:#cfe2ff; background:#0c1732; }
 
-    /* 2列/3列レスポンシブ */
-    @media (min-width: 720px){
-      .card.span-6{ grid-column: span 6; }
-      .card.span-4{ grid-column: span 4; }
-    }
-
-    /* フッター */
-    footer{ margin: 40px 0 24px; color:#9ab0d6; font-size:13px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
-    .links{ display:flex; gap:14px; flex-wrap:wrap; }
-
-    /* モバイルメニュー */
     @media (max-width: 720px){
       .menu{ display:none; }
       .toggle{ display:inline-flex; align-items:center; gap:8px; }
@@ -92,6 +74,7 @@
       </div>
       <nav class="menu" aria-label="Primary">
         <a href="#about">About</a>
+        <a href="#profile">Profile</a>
         <a href="#projects">Projects</a>
         <a href="#research">Research</a>
         <a href="#music">Music/VR</a>
@@ -104,6 +87,7 @@
 
   <aside id="drawer" aria-hidden="true">
     <a href="#about" onclick="closeDrawer()">About</a>
+    <a href="#profile" onclick="closeDrawer()">Profile</a>
     <a href="#projects" onclick="closeDrawer()">Projects</a>
     <a href="#research" onclick="closeDrawer()">Research</a>
     <a href="#music" onclick="closeDrawer()">Music/VR</a>
@@ -124,10 +108,46 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" aria-labelledby="about-h">
-      <h2 id="about-h">About</h2>
-      <p class="lead">インタラクション系の大学研究者を志向し、国際会議への採択を目標に研究・制作を進めています。最近は <strong>捕手体験VR（CatcherX）</strong>、<strong>MIDIリアルタイム可視化（LuVoX）</strong>、<strong>音楽オンセット同期生成</strong> などに注力中。</p>
+    <!-- PROFILE -->
+    <section id="profile" aria-labelledby="profile-h">
+      <h2 id="profile-h">Profile</h2>
+      <article class="card">
+        <h3>自己紹介</h3>
+        <p class="lead">山口 瑞悠（やまぐち みゆう）。2005年8月30日、三重県鈴鹿市生まれ。高校時代（三重県立津高等学校）に音楽情報処理へ関心を深め、現在の研究室に配属。以降、エンタテインメントと音楽情報処理の接続を模索しつつ研究・制作を継続しています。</p>
+      </article>
+      <article class="card">
+        <h3>経歴</h3>
+        <ul>
+          <li>2021年3月 鈴鹿市立神戸中学校 卒業</li>
+          <li>2021年4月 三重県立津高等学校 入学</li>
+          <li>2024年3月 三重県立津高等学校 卒業</li>
+          <li>2024年4月 福知山公立大学 情報学部 情報学科 入学（橋田光代研究室 配属）</li>
+          <li>2024年9月 関西学院大学 工学部 情報工学課程 片寄晴弘研究室 オブザーバー研究員</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>発表論文</h3>
+        <ul>
+          <li>「ピアノ型ピンボール盤を用いた能動的サウンド鑑賞ゲーム」EC2024（北海道情報大学）</li>
+          <li>「CatcherX:　すべての球種を再現するVR捕球シミュレータ」EC2025（日本大学文理学部キャンパス百周年記念館）</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>過去の参加学会</h3>
+        <ul>
+          <li>2025年8月 EC2025（日本大学文理学部 百周年記念館）<br><span class="meta">CatcherX: すべての球種を再現するVR捕球シミュレータ</span></li>
+          <li>2024年9月 EC2024（北海道情報大学）<br><span class="meta">ピアノ型ピンボール盤を用いた能動的サウンド鑑賞ゲーム（デモ発表）</span></li>
+          <li>2024年8月 SIGMUS141（駒澤大学）<br><span class="meta">ピアノ型ピンボール盤を用いた能動的サウンド鑑賞ゲームの試作（デモ発表）</span></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>過去の対外発表（学会以外）</h3>
+        <ul>
+          <li>2025年8月 関西学院大学 工学部 情報工学課程 片寄晴弘研究室 主催 2025年度 夏季中間発表<br><span class="meta">CatcherX: すべての球種を再現するVR捕球シミュレータ</span></li>
+          <li>2024年12月 関西学院大学 工学部 情報工学課程 片寄晴弘研究室 主催 2024年度 冬季中間発表<br><span class="meta">Marvelica: 演奏表現可能なマーブルアニメーション</span></li>
+          <li>2024年8月 関西学院大学 工学部 情報工学課程 片寄晴弘研究室 主催 2024年度 夏季中間発表<br><span class="meta">ピアノ型ピンボール盤を用いた能動的サウンド鑑賞ゲーム</span></li>
+        </ul>
+      </article>
     </section>
 
     <!-- PROJECTS -->

@@ -1,298 +1,676 @@
 <!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yamaguchi Miyu | Portfolio</title>
-  <meta name="description" content="情報学・インタラクション・音楽情報処理・VR/ARの研究と作品を紹介する個人サイト。" />
-  <meta name="color-scheme" content="light dark" />
-  <meta name="theme-color" content="#0f172a" />
-  <meta property="og:title" content="Yamaguchi Miyu | Portfolio" />
-  <meta property="og:description" content="インタラクション・音楽情報処理・VR/AR・野球×VRの研究と制作。" />
-  <meta property="og:type" content="website" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>山口 瑞悠のホームページ</title>
+  <script src="/_sdk/element_sdk.js"></script>
   <style>
-    :root{
-      --bg: #0b1020;        /* 背景濃紺 */
-      --card: #0e1730;      /* カード濃紺 */
-      --muted: #8aa0c6;     /* 説明文 */
-      --text: #e6eefc;      /* 文字 */
-      --accent: #60a5fa;    /* アクセント(青) */
-      --accent2: #34d399;   /* アクセント(緑) */
-      --ring: rgba(96,165,250,.5);
-      --border: #24314e;
+    /* 基本設定 */
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
+      min-height: 100%;
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body{
-      margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
-      background: radial-gradient(1200px 800px at 15% 10%, #142449 0%, rgba(20,36,73,0) 60%),
-                  radial-gradient(900px 600px at 85% 0%, #10305a 0%, rgba(16,48,90,0) 60%), var(--bg);
-      color: var(--text);
+
+    html {
+      height: 100%;
+      scroll-behavior: smooth;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* 背景の浮遊シェイプ */
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .shape:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+    .shape:nth-child(2) { top: 60%; left: 80%; animation-delay: 5s; }
+    .shape:nth-child(3) { top: 30%; left: 60%; animation-delay: 10s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(30px, -30px) rotate(90deg); }
+      50% { transform: translate(-20px, 20px) rotate(180deg); }
+      75% { transform: translate(40px, 10px) rotate(270deg); }
+    }
+
+    /* メインコンテナ */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
 
     /* ヘッダー */
-    header { position: sticky; top: 0; backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(11,16,32,0.9), rgba(11,16,32,0.4)); border-bottom: 1px solid var(--border); z-index: 50; }
-    .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px; }
-    .logo { width:28px; height:28px; border-radius:8px; background: linear-gradient(135deg, var(--accent), var(--accent2)); display:grid; place-items:center; color:#0b1020; font-weight:900; }
-    .menu { display:flex; gap:18px; align-items:center; }
-    .menu a { color: #d7e6ff; font-weight:600; opacity:.9; }
-    .menu a:hover { opacity:1; }
-    .btn{ display:inline-block; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:#0e1730; font-weight:700; }
-    .btn:hover{ box-shadow:0 0 0 4px var(--ring); text-decoration:none; }
-    .toggle{ display:none; }
+    header {
+      text-align: center;
+      padding: 80px 20px;
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
 
-    /* ヒーロー */
-    .hero{ padding: 72px 0 40px; display:grid; gap:18px; }
-    .title{ font-size: clamp(28px, 4vw, 48px); line-height:1.1; font-weight:800; letter-spacing:.3px; }
-    .subtitle{ color: var(--muted); font-size: clamp(14px, 1.6vw, 18px); max-width: 68ch; }
-    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; }
-    .chip{ padding:8px 12px; border:1px solid var(--border); border-radius:999px; background: #0c1732; font-size:13px; color:#cfe2ff; }
+    header:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    }
 
-    /* セクション共通 */
-    section { padding: 24px 0 8px; }
-    h2 { font-size: 22px; margin: 28px 0 12px; }
-    p.lead { color: var(--muted); }
-    .grid{ display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); }
-    .card{ background: linear-gradient(180deg, var(--card), #0b132a); border:1px solid var(--border); border-radius:16px; padding:16px; }
-    .card h3{ margin:4px 0 6px; font-size:18px; }
-    .meta{ color:#a9b9d8; font-size:13px; }
-    .card p{ color:#d6e6ff; }
-    .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
-    .tag{ font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:#cfe2ff; background:#0c1732; }
+    h1 {
+      font-size: 80px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      margin: 0 0 15px 0;
+      color: #1e3a8a;
+      animation: slideInDown 1s ease;
+      line-height: 1.1;
+    }
 
-    /* 2列/3列レイアウト（Projectsなど） */
-    @media (min-width: 720px){ .card.span-6{ grid-column: span 6; } .card.span-4{ grid-column: span 4; } }
+    .subtitle {
+      font-size: 20px;
+      color: #0ea5e9;
+      margin: 0;
+      font-weight: 500;
+      animation: slideInUp 1s ease;
+    }
 
-    /* Profileだけ“横渕抜き”（単一カラム縦並び） */
-    #profile .grid{ display:block; }
-    #profile .card{ margin-bottom: 20px; }
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ナビゲーション */
+    .navigation {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid #e5e7eb;
+    }
+
+    .nav-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #0ea5e9 0%, #1e3a8a 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(14, 165, 233, 0.3);
+    }
+
+    .nav-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(14, 165, 233, 0.5);
+    }
+
+    /* セクション共通スタイル */
+    .section {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .section h2 {
+      font-size: 32px;
+      color: #1e3a8a;
+      margin: 0 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #0ea5e9;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-icon {
+      font-size: 36px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .section p, .section ul {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .section li {
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .section li:hover {
+      padding-left: 10px;
+      background: rgba(14, 165, 233, 0.05);
+      border-radius: 5px;
+    }
+
+    .section li:last-child {
+      border-bottom: none;
+    }
+
+    /* プロフィールセクションのレイアウト調整 */
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      border: 5px solid white;
+      flex-shrink: 0; /* 画像が縮まないように */
+    }
+
+    /* 各セクション内の画像スタイル */
+    .section-image-container {
+        margin-top: 25px;
+        text-align: center;
+    }
+
+    .section-image {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .section-image:hover {
+        transform: scale(1.02);
+    }
+
+    /* スライドショーのスタイル */
+    .slideshow-container {
+      max-width: 900px;
+      position: relative;
+      margin: 10px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    .mySlides img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* フェードアニメーション */
+    .fade {
+      animation-name: fade;
+      animation-duration: 2s;
+    }
+
+    @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
+
+    /* 受賞バッジ */
+    .award-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba(251, 191, 36, 0.3);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* SNSリンク */
+    .sns-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .sns-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #0ea5e9 0%, #1e3a8a 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+      min-width: 200px;
+    }
+
+    .sns-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+    }
+
+    .sns-icon {
+      font-size: 24px;
+    }
 
     /* フッター */
-    footer{ margin: 40px 0 24px; color:#9ab0d6; font-size:13px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
-    .links{ display:flex; gap:14px; flex-wrap:wrap; }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: white;
+      font-size: 14px;
+      margin-top: 40px;
+    }
 
-    /* モバイルメニュー */
-    @media (max-width: 720px){
-      .menu{ display:none; }
-      .toggle{ display:inline-flex; align-items:center; gap:8px; }
-      #drawer{ position:fixed; inset:0 0 auto auto; width:min(80vw,320px); height:100dvh; background:#0e1730; border-left:1px solid var(--border); transform:translateX(100%); transition:.25s ease; padding:20px; z-index:60; }
-      #drawer.open{ transform:translateX(0); }
-      #drawer a{ display:block; padding:12px 4px; font-weight:700; color:#d7e6ff; }
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      h1 { font-size: 48px; }
+      .subtitle { font-size: 16px; }
+      .section h2 { font-size: 24px; }
+      .section p, .section ul { font-size: 14px; }
+
+      .about-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .profile-image {
+          width: 150px;
+          height: 150px;
+      }
     }
   </style>
-</head>
-<body>
-  <!-- ヘッダー -->
-  <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">M</div>
-        <span>MIYU / Portfolio</span>
-      </div>
-      <nav class="menu" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#profile">Profile</a>
-        <a href="#projects">Projects</a>
-        <a href="#research">Research</a>
-        <a href="#music">Music/VR</a>
-        <a href="#contact">Contact</a>
-        <a class="btn" href="#" download aria-label="Download CV as PDF">CV</a>
-      </nav>
-      <button class="toggle btn" aria-controls="drawer" aria-expanded="false" id="openMenu">メニュー</button>
-    </div>
-  </header>
-
-  <!-- モバイルドロワー -->
-  <aside id="drawer" aria-hidden="true">
-    <a href="#about" onclick="closeDrawer()">About</a>
-    <a href="#profile" onclick="closeDrawer()">Profile</a>
-    <a href="#projects" onclick="closeDrawer()">Projects</a>
-    <a href="#research" onclick="closeDrawer()">Research</a>
-    <a href="#music" onclick="closeDrawer()">Music/VR</a>
-    <a href="#contact" onclick="closeDrawer()">Contact</a>
-    <a href="#" onclick="closeDrawer()">CV</a>
-  </aside>
-
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="site-title">
-      <h1 id="site-title" class="title">山口 瑞悠 / Yamaguchi Miyu</h1>
-      <p class="subtitle">福知山公立大学 情報学部。インタラクション、音楽情報処理、VR/AR、野球×VRトレーニングの研究と制作。学会発表・プロジェクト・作品をここに集約します。</p>
-      <div class="chips" role="list">
-        <span class="chip" role="listitem"># Interaction</span>
-        <span class="chip" role="listitem"># Music & MIR</span>
-        <span class="chip" role="listitem"># VR/AR</span>
-        <span class="chip" role="listitem"># Baseball Analytics</span>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="floating-shapes">
+   <svg class="shape" width="100" height="100" viewbox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#0ea5e9" />
+   </svg>
+   <svg class="shape" width="120" height="120" viewbox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="#1e3a8a" />
+   </svg>
+   <svg class="shape" width="90" height="90" viewbox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="#0ea5e9" />
+   </svg>
+  </div>
+  <div class="container">
+   <header>
+    <h1 id="main-title">山口 瑞悠</h1>
+    <p class="subtitle" id="subtitle">エンタテインメント・VR・音楽情報処理</p>
+    <nav class="navigation">
+        <a href="#about-section" class="nav-link">プロフィール</a>
+        <a href="#career-section" class="nav-link">経歴</a>
+        <a href="#publications-section" class="nav-link">発表論文</a>
+        <a href="#awards-section" class="nav-link">受賞歴</a>
+        <a href="#conferences-section" class="nav-link">学会発表</a>
+        <a href="#presentations-section" class="nav-link">対外発表</a>
+        <a href="#sns-section" class="nav-link">SNS</a>
+        <a href="#gallery-section" class="nav-link">ギャラリー</a>
+    </nav>
+   </header>
+   <main>
+    <section class="section" id="about-section">
+      <h2><span class="section-icon">👤</span><span id="about-title">プロフィール</span></h2>
+      <div class="about-content">
+        <img src="20250910_215900.JPG" alt="山口 瑞悠のプロフィール写真" class="profile-image">
+        <div>
+          <p>2005年8月30日，三重県鈴鹿市生まれ．三重県立津高等学校時代に培った感性を原点に，現在は「技術がいかに人の心を動かすか」というエンタテインメントコンピューティングの可能性を探求しています．音楽情報処理への興味から始まった私の旅は，VR技術を用いた身体的かつ没入感のある体験創出へとその領域を拡張させています．</p>
+          <p>福知山公立大学 橋田光代研究室および関西学院大学 片寄晴弘研究室にて，HIF（Human Information Framework）に基づくインタラクティブシステムの研究開発に従事．特にVRを用いた野球捕球シミュレータ「CatcherX」の開発など，デジタルとフィジカルの境界を溶かすような，次世代のエンタテインメント体験のデザインに情熱を注いでいます．</p>
+        </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" aria-labelledby="about-h">
-      <h2 id="about-h">About</h2>
-      <p class="lead">インタラクション系の大学研究者を志向し、国際会議への採択を目標に研究・制作を進めています。最近は <strong>CatcherX</strong>（VR捕手体験）、<strong>LuVoX</strong>（MIDIリアルタイム可視化）、<strong>音楽オンセット同期生成</strong> に注力中。</p>
+    <section class="section" id="career-section">
+      <h2><span class="section-icon">📚</span><span id="career-title">経歴</span></h2>
+      <ul>
+       <li>2024年3月　三重県立津高等学校　卒業</li>
+       <li>2024年4月　福知山公立大学情報学部 情報学科　入学　同時に橋田光代研究室配属</li>
+       <li>2024年9月　関西学院大学工学部 情報工学課程 片寄晴弘研究室外部研究員</li>
+      </ul>
     </section>
 
-    <!-- PROFILE（横渕抜き＝縦並び） -->
-    <section id="profile" aria-labelledby="profile-h">
-      <h2 id="profile-h">Profile</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>自己紹介</h3>
-          <p class="lead">山口 瑞悠（やまぐち みゆう）。2005年8月30日、三重県鈴鹿市生まれ。高校時代（三重県立津高等学校）に音楽情報処理へ関心を深め、現在の研究室に配属。以降、エンタテインメントと音楽情報処理の接続を模索しつつ研究・制作を継続しています。</p>
-        </article>
-        <article class="card">
-          <h3>経歴</h3>
-          <ul>
-            <li>2021年4月 三重県立津高等学校 入学</li>
-            <li>2024年3月 三重県立津高等学校 卒業</li>
-            <li>2024年4月 福知山公立大学 情報学部 情報学科 入学（橋田光代研究室 配属）</li>
-            <li>2024年9月 関西学院大学 工学部 情報工学課程 片寄晴弘研究室 オブザーバー研究員</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>発表論文</h3>
-          <ul>
-            <li>「ピアノ型ピンボール盤を用いた能動的サウンド鑑賞ゲーム」EC2024（北海道情報大学）</li>
-            <li>「CatcherX: すべての球種を再現するVR捕球シミュレータ」EC2025（日本大学文理学部キャンパス百周年記念館）</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>過去の参加学会</h3>
-          <ul>
-            <li>2025年8月 EC2025（日本大学文理学部 百周年記念館）<br><span class="meta">CatcherX: すべての球種を再現するVR捕球シミュレータ</span></li>
-            <li>2024年9月 EC2024（北海道情報大学）<br><span class="meta">ピアノ型ピンボール盤を用いた能動的サウンド鑑賞ゲーム（デモ発表）</span></li>
-            <li>2024年8月 SIGMUS141（駒澤大学）<br><span class="meta">ピアノ型ピンボール盤を用いた能動的サウンド鑑賞ゲームの試作（デモ発表）</span></li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>過去の対外発表（学会以外）</h3>
-          <ul>
-            <li>2025年8月 関西学院大学 工学部 情報工学課程 片寄晴弘研究室 主催 2025年度 夏季中間発表<br><span class="meta">CatcherX: すべての球種を再現するVR捕球シミュレータ</span></li>
-            <li>2024年12月 関西学院大学 工学部 情報工学課程 片寄晴弘研究室 主催 2024年度 冬季中間発表<br><span class="meta">Marvelica: 演奏表現可能なマーブルアニメーション</span></li>
-            <li>2024年8月 関西学院大学 工学部 情報工学課程 片寄晴弘研究室 主催 2024年度 夏季中間発表<br><span class="meta">ピアノ型ピンボール盤を用いた能動的サウンド鑑賞ゲーム</span></li>
-          </ul>
-        </article>
+    <section class="section" id="publications-section">
+      <h2><span class="section-icon">📝</span><span id="publications-title">発表論文</span></h2>
+      <ul>
+       <li>CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</li>
+       <li>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（EC2024＠北海道情報大学）</li>
+      </ul>
+    </section>
+
+    <section class="section" id="awards-section">
+      <h2><span class="section-icon">🏆</span><span id="awards-title">受賞歴</span></h2>
+      <p><strong>一般セッション優秀賞</strong><br>
+       CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</p>
+       <span class="award-badge">🌟 優秀賞受賞</span>
+       <div class="section-image-container">
+        <img src="742b483039be38332a23b0fce3356a90-722x1024.jpg" alt="受賞時の写真" class="section-image">
+       </div>
+    </section>
+
+    <section class="section" id="conferences-section">
+      <h2><span class="section-icon">🎓</span><span id="conferences-title">過去の学会発表</span></h2>
+      <ul>
+       <li>2025年8月　EC2025＠日本大学文理学部百周年記念館<br>
+        CatcherX: すべての球種を再現するVR捕球シミュレータ（一般口頭・デモ発表）</li>
+       <li>2024年9月　EC2024＠北海道情報大学<br>
+        ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（デモ発表）</li>
+       <li>2024年8月　SIGMUS141＠駒澤大学<br>
+        ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲームの試作（デモ発表）</li>
+      </ul>
+      <div class="section-image-container">
+        <img src="IMG_8745.png" alt="学会参加時の写真" class="section-image">
+       </div>
+    </section>
+
+    <section class="section" id="presentations-section">
+      <h2><span class="section-icon">💬</span><span id="presentations-title">過去の対外発表</span></h2>
+      <ul>
+       <li>2025年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度冬季中間発表<br>
+        Catcher τείχος β: ボールを後ろに逸らさないVR捕球シミュレータの開発</li>
+       <li>2025年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度夏季中間発表<br>
+        CatcherX: すべての球種を再現するVR捕球シミュレータ</li>
+       <li>2024年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度冬季中間発表<br>
+        Marvelica: 演奏表現可能なマーブルアニメーション</li>
+       <li>2024年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度夏季中間発表<br>
+        ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム</li>
+      </ul>
+      <div class="section-image-container">
+        <img src="IMG_8611.png" alt="対外発表時の写真" class="section-image">
+       </div>
+    </section>
+
+    <section class="section" id="sns-section">
+      <h2><span class="section-icon">🔗</span><span id="sns-title">SNS</span></h2>
+      <div class="sns-links"><a href="https://x.com/Ryu_mei1537" target="_blank" rel="noopener noreferrer" class="sns-button"> <span class="sns-icon">𝕏</span> <span class="sns-name">X (Twitter)</span> </a> <a href="https://www.instagram.com/miyu.0830_y" target="_blank" rel="noopener noreferrer" class="sns-button"> <span class="sns-icon">📷</span> <span class="sns-name">Instagram</span> </a> <a href="https://github.com/Ryu-mei-15" target="_blank" rel="noopener noreferrer" class="sns-button"> <span class="sns-icon">💻</span> <span class="sns-name">GitHub</span> </a>
       </div>
     </section>
 
-    <!-- PROJECTS（田の字 & タグ丸） -->
-    <section id="projects" aria-labelledby="projects-h">
-      <h2 id="projects-h">Projects</h2>
-      <div class="grid">
-        <article class="card span-6">
-          <h3>CatcherX — VR Catcher Training</h3>
-          <div class="meta">Unity / XR Interaction / 物理シミュレーション / 2025-</div>
-          <p>投球軌道の物理再現、捕球動作入力、触覚・視覚フィードバックを備えた捕手体験。球種・球速・回転をパラメタ化し、緊張感のある実装を追求。</p>
-          <div class="tags"><span class="tag">Unity</span><span class="tag">VR</span><span class="tag">Physics</span><span class="tag">Haptics</span></div>
-        </article>
-        <article class="card span-6">
-          <h3>Marble Animation — Onset‑Synced Keys</h3>
-          <div class="meta">Python / Pygame / Librosa / 2024-</div>
-          <p>音楽のonset_attackを元に、スフィアと鍵盤の生成・接触タイミングを制御。外部JSONから正確な時刻列を読み取り、視覚表現を発展。</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Librosa</span><span class="tag">Pygame</span></div>
-        </article>
-      </div>
+    <section class="section" id="gallery-section">
+        <h2><span class="section-icon">📸</span>ギャラリー</h2>
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="1694243037224.jpg" alt="ギャラリー画像1">
+            </div>
+            <div class="mySlides fade">
+                <img src="20240903_132306.JPG" alt="ギャラリー画像2">
+            </div>
+            <div class="mySlides fade">
+                <img src="bfcd84eb2036c7c519f1fa56ca0b73f9-scaled.jpg" alt="ギャラリー画像3">
+            </div>
+            <div class="mySlides fade">
+                <img src="IMG_8608.png" alt="ギャラリー画像4">
+            </div>
+            <div class="mySlides fade">
+                <img src="IMG_8609.png" alt="ギャラリー画像5">
+            </div>
+            <div class="mySlides fade">
+                <img src="IMG_8741.png" alt="ギャラリー画像6">
+            </div>
+            <div class="mySlides fade">
+                <img src="IMG_8750.png" alt="ギャラリー画像7">
+            </div>
+            <div class="mySlides fade">
+                <img src="IMG_8754.png" alt="ギャラリー画像8">
+            </div>
+        </div>
     </section>
+   </main>
+   <footer>
+    <p>© 2025 山口 瑞悠 All Rights Reserved.</p>
+   </footer>
+  </div>
+  
+  <script>
+    let slideIndex = 0;
+    showSlides();
 
-    <!-- RESEARCH -->
-    <section id="research" aria-labelledby="research-h">
-      <h2 id="research-h">Research</h2>
-      <div class="grid">
-        <article class="card span-4">
-          <h3>論文/発表</h3>
-          <p>国内外の学会・シンポジウムへの投稿・登壇情報を掲載予定。<br>例）IPSJ EC2025、Interaction、他</p>
-        </article>
-        <article class="card span-4">
-          <h3>ポスター/スライド</h3>
-          <p>各プロジェクトのポスターPDF・登壇スライドへのリンクをまとめます。</p>
-        </article>
-        <article class="card span-4">
-          <h3>データ/コード</h3>
-          <p>GitHub・実験データ・再現手順へのリンクを整理。</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- MUSIC / VR -->
-    <section id="music" aria-labelledby="music-h">
-      <h2 id="music-h">Music / VR</h2>
-      <div class="grid">
-        <article class="card span-6">
-          <h3>Real‑time Performance</h3>
-          <p>鍵盤/コントローラ演奏に合わせた映像演出。MIDIコントロールチェンジでパラメータを操作。</p>
-        </article>
-        <article class="card span-6">
-          <h3>Onset‑Driven Generation</h3>
-          <p>Librosa解析結果（JSON）をUnityへ供給し、生成タイミングを同期。</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-h">
-      <h2 id="contact-h">Contact</h2>
-      <p class="lead">ご連絡はメール、またはSNSのDMへどうぞ。</p>
-      <div class="grid">
-        <article class="card span-6">
-          <h3>Links</h3>
-          <ul>
-            <li>ADD: <a href="#" rel="me">〒620-0886　京都府福知山市字堀3770　5号館 1F　5102号室　橋田光代研究室 気付</a></li>
-            <li>Phone: <a href="tel:070-7775-6292">070-7775-6292</a></li>
-            <li>Mail: <a href="mailto:miyu0830.y@gmail.com">miyu0830.y@gmail.com</a></li>
-            <li>GitHub: <a href="#" rel="me">https://github.com/Ryu-mei-15</a></li>
-            <li>X(Twitter): <a href="#" rel="me">https://x.com/Ryu_mei1537</a></li>
-          </ul>
-        </article>
-        <!--
-        <article class="card span-6">
-          <h3>メッセージ</h3>
-          <form onsubmit="event.preventDefault(); alert('送信機能は未実装です。フォーム送信先を設定してください。');">
-            <label>お名前<br><input required placeholder="山口 瑞悠" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0c1732;color:var(--text);"></label>
-            <br><br>
-            <label>メール<br><input type="email" required placeholder="you@example.com" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0c1732;color:var(--text);"></label>
-            <br><br>
-            <label>内容<br><textarea required rows="4" placeholder="お問い合わせ内容" style="width:100%;padding:10px;border-radius:12px;border:1px solid var(--border);background:#0c1732;color:var(--text);"></textarea></label>
-            <br><br>
-            <button class="btn" type="submit">送信</button>
-          </form>
-        </article>
-        -->
-      </div>
-    </section>
-
-    <!-- フッター -->
-    <footer>
-      <div>© <span id="year"></span> Yamaguchi Miyu</div>
-      <div class="links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#research">Research</a>
-        <a href="#music">Music/VR</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </footer>
-  </main>
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}
+      slides[slideIndex-1].style.display = "block";
+      setTimeout(showSlides, 4000); // 4秒ごとに切り替わる設定
+    }
+  </script>
 
   <script>
-    // 年号
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // モバイルドロワー
-    const drawer = document.getElementById('drawer');
-    const openBtn = document.getElementById('openMenu');
-    function closeDrawer(){ drawer.classList.remove('open'); openBtn.setAttribute('aria-expanded','false'); drawer.setAttribute('aria-hidden','true'); }
-    openBtn?.addEventListener('click', () => {
-      const isOpen = drawer.classList.toggle('open');
-      openBtn.setAttribute('aria-expanded', String(isOpen));
-      drawer.setAttribute('aria-hidden', String(!isOpen));
-    });
-    window.closeDrawer = closeDrawer;
+    const defaultConfig = {
+      main_title: "山口 瑞悠",
+      subtitle: "エンタテインメント・HIF・音楽情報処理",
+      about_title: "プロフィール",
+      career_title: "経歴",
+      publications_title: "発表論文",
+      conferences_title: "過去の参加学会",
+      presentations_title: "過去の対外発表",
+      awards_title: "受賞歴",
+      sns_title: "SNS",
+      background_color: "#1e3a8a",
+      secondary_color: "#0ea5e9",
+      text_color: "#333333",
+      button_color: "#0ea5e9",
+      accent_color: "#ffffff",
+      font_family: "Hiragino Sans",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const mainTitle = config.main_title || defaultConfig.main_title;
+      const subtitle = config.subtitle || defaultConfig.subtitle;
+      const aboutTitle = config.about_title || defaultConfig.about_title;
+      const careerTitle = config.career_title || defaultConfig.career_title;
+      const publicationsTitle = config.publications_title || defaultConfig.publications_title;
+      const conferencesTitle = config.conferences_title || defaultConfig.conferences_title;
+      const presentationsTitle = config.presentations_title || defaultConfig.presentations_title;
+      const awardsTitle = config.awards_title || defaultConfig.awards_title;
+      const snsTitle = config.sns_title || defaultConfig.sns_title;
+
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const buttonColor = config.button_color || defaultConfig.button_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+
+      document.getElementById('main-title').textContent = mainTitle;
+      document.getElementById('subtitle').textContent = subtitle;
+      document.getElementById('about-title').textContent = aboutTitle;
+      document.getElementById('career-title').textContent = careerTitle;
+      document.getElementById('publications-title').textContent = publicationsTitle;
+      document.getElementById('conferences-title').textContent = conferencesTitle;
+      document.getElementById('presentations-title').textContent = presentationsTitle;
+      document.getElementById('awards-title').textContent = awardsTitle;
+      document.getElementById('sns-title').textContent = snsTitle;
+
+      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${secondaryColor} 100%)`;
+      
+      const h1Elements = document.querySelectorAll('h1');
+      h1Elements.forEach(el => {
+        el.style.color = backgroundColor;
+        el.style.fontFamily = `${fontFamily}, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`;
+        el.style.fontSize = `${fontSize * 5}px`;
+      });
+
+      const subtitleElements = document.querySelectorAll('.subtitle');
+      subtitleElements.forEach(el => {
+        el.style.color = secondaryColor;
+        el.style.fontFamily = `${fontFamily}, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`;
+        el.style.fontSize = `${fontSize * 1.25}px`;
+      });
+
+      const h2Elements = document.querySelectorAll('.section h2');
+      h2Elements.forEach(el => {
+        el.style.color = backgroundColor;
+        el.style.borderBottomColor = secondaryColor;
+        el.style.fontFamily = `${fontFamily}, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`;
+        el.style.fontSize = `${fontSize * 2}px`;
+      });
+
+      const textElements = document.querySelectorAll('.section p, .section ul, .section li');
+      textElements.forEach(el => {
+        el.style.color = textColor;
+        el.style.fontFamily = `${fontFamily}, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`;
+        el.style.fontSize = `${fontSize}px`;
+      });
+
+      const buttons = document.querySelectorAll('.interactive-button, .sns-button');
+      buttons.forEach(btn => {
+        btn.style.background = `linear-gradient(135deg, ${buttonColor} 0%, ${backgroundColor} 100%)`;
+        btn.style.fontFamily = `${fontFamily}, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`;
+        btn.style.fontSize = `${fontSize}px`;
+      });
+
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.style.background = `linear-gradient(135deg, ${buttonColor} 0%, ${backgroundColor} 100())`;
+        link.style.fontFamily = `${fontFamily}, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`;
+        link.style.fontSize = `${fontSize * 0.875}px`;
+      });
+
+      const footerElements = document.querySelectorAll('footer');
+      footerElements.forEach(el => {
+        el.style.color = accentColor;
+        el.style.fontFamily = `${fontFamily}, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`;
+        el.style.fontSize = `${fontSize * 0.875}px`;
+      });
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.button_color || defaultConfig.button_color,
+              set: (value) => {
+                config.button_color = value;
+                window.elementSdk.setConfig({ button_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["main_title", config.main_title || defaultConfig.main_title],
+          ["subtitle", config.subtitle || defaultConfig.subtitle],
+          ["about_title", config.about_title || defaultConfig.about_title],
+          ["career_title", config.career_title || defaultConfig.career_title],
+          ["publications_title", config.publications_title || defaultConfig.publications_title],
+          ["conferences_title", config.conferences_title || defaultConfig.conferences_title],
+          ["presentations_title", config.presentations_title || defaultConfig.presentations_title],
+          ["awards_title", config.awards_title || defaultConfig.awards_title],
+          ["sns_title", config.sns_title || defaultConfig.sns_title]
+        ])
+      });
+    }
   </script>
-</body>
+ </body>
 </html>

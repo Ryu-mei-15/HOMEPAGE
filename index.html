@@ -225,6 +225,31 @@
       border-bottom: none;
     }
 
+    /* ★ 追加：学術リンク用のスタイル */
+    .academic-link {
+      color: #0ea5e9;
+      text-decoration: none;
+      border-bottom: 1px dashed #0ea5e9;
+      transition: all 0.3s ease;
+      display: inline;
+    }
+
+    .academic-link:hover {
+      color: #1e3a8a;
+      border-bottom: 1px solid #1e3a8a;
+    }
+
+    .academic-link::after {
+      content: ' ↗';
+      font-size: 0.8em;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .academic-link:hover::after {
+      transform: translate(2px, -2px);
+    }
+
     /* プロフィールセクションのレイアウト調整 */
     .about-content {
       display: flex;
@@ -239,7 +264,7 @@
       object-fit: cover;
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       border: 5px solid white;
-      flex-shrink: 0; /* 画像が縮まないように */
+      flex-shrink: 0;
     }
 
     /* 各セクション内の画像スタイル */
@@ -375,12 +400,9 @@
  </head>
  <body>
   <div class="floating-shapes">
-   <svg class="shape" width="100" height="100" viewbox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#0ea5e9" />
-   </svg>
-   <svg class="shape" width="120" height="120" viewbox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="#1e3a8a" />
-   </svg>
-   <svg class="shape" width="90" height="90" viewbox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="#0ea5e9" />
-   </svg>
+   <svg class="shape" width="100" height="100" viewbox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#0ea5e9" /></svg>
+   <svg class="shape" width="120" height="120" viewbox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="#1e3a8a" /></svg>
+   <svg class="shape" width="90" height="90" viewbox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="#0ea5e9" /></svg>
   </div>
   <div class="container">
    <div class="lang-switcher">
@@ -428,15 +450,17 @@
     <section class="section" id="publications-section">
       <h2><span class="section-icon">📝</span><span id="publications-title" data-i18n="publications_title">発表論文</span></h2>
       <ul>
-       <li data-i18n="publication_item_1">CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</li>
-       <li data-i18n="publication_item_2">ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（EC2024＠北海道情報大学）</li>
+       <!-- ★ 修正：リンク要素を追加 -->
+       <li data-i18n="publication_item_1"><a href="https://ipsj.ixsq.nii.ac.jp/records/238787" target="_blank" rel="noopener noreferrer" class="academic-link">CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</a></li>
+       <li data-i18n="publication_item_2"><a href="https://ipsj.ixsq.nii.ac.jp/records/2003671" target="_blank" rel="noopener noreferrer" class="academic-link">ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（EC2024＠北海道情報大学）</a></li>
       </ul>
     </section>
 
     <section class="section" id="awards-section">
       <h2><span class="section-icon">🏆</span><span id="awards-title" data-i18n="awards_title">受賞歴</span></h2>
+      <!-- ★ 修正：リンク要素を追加 -->
       <p data-i18n="award_item_1_title"><strong>一般セッション優秀賞</strong><br>
-       CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</p>
+       <a href="https://ec2025.entcomp.org/award/" target="_blank" rel="noopener noreferrer" class="academic-link">CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</a></p>
        <span class="award-badge" data-i18n="award_item_1_badge">🌟 優秀賞受賞</span>
        <div class="section-image-container">
         <img src="742b483039be38332a23b0fce3356a90-722x1024.jpg" alt="受賞時の写真" class="section-image">
@@ -446,12 +470,13 @@
     <section class="section" id="conferences-section">
       <h2><span class="section-icon">🎓</span><span id="conferences-title" data-i18n="conferences_title">過去の参加学会</span></h2>
       <ul>
+       <!-- ★ 修正：タイトル部分をリンク要素化 -->
        <li data-i18n="conference_item_1">2025年8月　EC2025＠日本大学文理学部百周年記念館<br>
-        CatcherX: すべての球種を再現するVR捕球シミュレータ（一般口頭・デモ発表）</li>
+        <a href="https://ec2025.entcomp.org/" target="_blank" rel="noopener noreferrer" class="academic-link">CatcherX: すべての球種を再現するVR捕球シミュレータ（一般口頭・デモ発表）</a></li>
        <li data-i18n="conference_item_2">2024年9月　EC2024＠北海道情報大学<br>
-        ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（デモ発表）</li>
+        <a href="https://ec2024.entcomp.org/" target="_blank" rel="noopener noreferrer" class="academic-link">ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（デモ発表）</a></li>
        <li data-i18n="conference_item_3">2024年8月　SIGMUS141＠駒澤大学<br>
-        ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲームの試作（デモ発表）</li>
+        <a href="https://www.ipsj.or.jp/kenkyukai/event/mus141.html" target="_blank" rel="noopener noreferrer" class="academic-link">ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲームの試作（デモ発表）</a></li>
       </ul>
       <div class="section-image-container">
         <img src="IMG_8745.png" alt="学会参加時の写真" class="section-image">
@@ -461,14 +486,15 @@
     <section class="section" id="presentations-section">
       <h2><span class="section-icon">💬</span><span id="presentations-title" data-i18n="presentations_title">過去の対外発表</span></h2>
       <ul>
+       <!-- ★ 修正：タイトル部分をリンク要素化 -->
        <li data-i18n="presentation_item_1">2025年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度冬季中間発表<br>
-        Catcher τείχος β: ボールを後ろに逸らさないVR捕球シミュレータの開発</li>
+        <a href="https://ist.ksc.kwansei.ac.jp/~katayose/public_seminar/2025winter.html" target="_blank" rel="noopener noreferrer" class="academic-link">Catcher τείχος β: ボールを後ろに逸らさないVR捕球シミュレータの開発</a></li>
        <li data-i18n="presentation_item_2">2025年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度夏季中間発表<br>
-        CatcherX: すべての球種を再現するVR捕球シミュレータ</li>
+        <a href="https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025" target="_blank" rel="noopener noreferrer" class="academic-link">CatcherX: すべての球種を再現するVR捕球シミュレータ</a></li>
        <li data-i18n="presentation_item_3">2024年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度冬季中間発表<br>
-        Marvelica: 演奏表現可能なマーブルアニメーション</li>
+        <a href="https://ist.ksc.kwansei.ac.jp/~katayose/public_seminar/2024winter.html" target="_blank" rel="noopener noreferrer" class="academic-link">Marvelica: 演奏表現可能なマーブルアニメーション</a></li>
        <li data-i18n="presentation_item_4">2024年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度夏季中間発表<br>
-        ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム</li>
+        <a href="https://scrapbox.io/KMHF-JRP/2024_%E5%A4%8F%E3%81%AE%E5%90%88%E5%90%8C%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E4%BC%9A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0" target="_blank" rel="noopener noreferrer" class="academic-link">ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム</a></li>
       </ul>
       <div class="section-image-container">
         <img src="IMG_8611.png" alt="対外発表時の写真" class="section-image">
@@ -559,20 +585,21 @@
         career_item_2: "April 2024: Enrolled in the Department of Informatics, Faculty of Informatics, University of Fukuchiyama. Simultaneously assigned to the Mitsuyo Hashida Laboratory.",
         career_item_3: "September 2024: External Researcher at the Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University.",
         publications_title: "Publications",
-        publication_item_1: "CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (EC2025 @ Nihon University, College of Humanities and Sciences Campus)",
-        publication_item_2: "An Active Sound Appreciation Game Using a Piano-type Pinball Machine (EC2024 @ Hokkaido Information University)",
+        // ★ 修正：翻訳テキストにもリンク要素を含める
+        publication_item_1: "<a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (EC2025 @ Nihon University, College of Humanities and Sciences Campus)</a>",
+        publication_item_2: "<a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>An Active Sound Appreciation Game Using a Piano-type Pinball Machine (EC2024 @ Hokkaido Information University)</a>",
         awards_title: "Awards",
-        award_item_1_title: "<strong>Excellent Presentation Award, General Session</strong><br>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (EC2025 @ Nihon University, College of Humanities and Sciences Campus)",
+        award_item_1_title: "<strong>Excellent Presentation Award, General Session</strong><br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (EC2025 @ Nihon University, College of Humanities and Sciences Campus)</a>",
         award_item_1_badge: "🌟 Excellence Award Winner",
         conferences_title: "Past Conferences",
-        conference_item_1: "August 2025: EC2025 @ Nihon University, College of Humanities and Sciences, Centennial Hall<br>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (Oral and Demo Presentation)",
-        conference_item_2: "September 2024: EC2024 @ Hokkaido Information University<br>An Active Sound Appreciation Game Using a Piano-type Pinball Machine (Demo Presentation)",
-        conference_item_3: "August 2024: SIGMUS141 @ Komazawa University<br>Prototype of an Active Sound Appreciation Game Using a Piano-type Pinball Machine (Demo Presentation)",
+        conference_item_1: "August 2025: EC2025 @ Nihon University, College of Humanities and Sciences, Centennial Hall<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (Oral and Demo Presentation)</a>",
+        conference_item_2: "September 2024: EC2024 @ Hokkaido Information University<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>An Active Sound Appreciation Game Using a Piano-type Pinball Machine (Demo Presentation)</a>",
+        conference_item_3: "August 2024: SIGMUS141 @ Komazawa University<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>Prototype of an Active Sound Appreciation Game Using a Piano-type Pinball Machine (Demo Presentation)</a>",
         presentations_title: "Past Presentations",
-        presentation_item_1: "December 2025: 2025 Winter Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br>Catcher τείχος β: Development of a VR Catching Simulator to Prevent Passed Balls",
-        presentation_item_2: "August 2025: 2025 Summer Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types",
-        presentation_item_3: "December 2024: 2024 Winter Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br>Marvelica: A Marble Animation Capable of Musical Expression",
-        presentation_item_4: "August 2024: 2024 Summer Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br>An Active Sound Appreciation Game Using a Piano-type Pinball Machine",
+        presentation_item_1: "December 2025: 2025 Winter Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>Catcher τείχος β: Development of a VR Catching Simulator to Prevent Passed Balls</a>",
+        presentation_item_2: "August 2025: 2025 Summer Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types</a>",
+        presentation_item_3: "December 2024: 2024 Winter Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>Marvelica: A Marble Animation Capable of Musical Expression</a>",
+        presentation_item_4: "August 2024: 2024 Summer Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>An Active Sound Appreciation Game Using a Piano-type Pinball Machine</a>",
         sns_title: "SNS",
         gallery_title: "Gallery",
         footer_text: "© 2025 Miyu Yamaguchi All Rights Reserved."
@@ -599,20 +626,21 @@
         career_item_2: "2024年4月　福知山公立大学情報学部 情報学科　入学　同時に橋田光代研究室配属",
         career_item_3: "2024年9月　関西学院大学工学部 情報工学課程 片寄晴弘研究室外部研究員",
         publications_title: "発表論文",
-        publication_item_1: "CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）",
-        publication_item_2: "ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（EC2024＠北海道情報大学）",
+        // ★ 修正：翻訳テキストにもリンク要素を含める
+        publication_item_1: "<a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</a>",
+        publication_item_2: "<a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（EC2024＠北海道情報大学）</a>",
         awards_title: "受賞歴",
-        award_item_1_title: "<strong>一般セッション優秀賞</strong><br>CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）",
+        award_item_1_title: "<strong>一般セッション優秀賞</strong><br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</a>",
         award_item_1_badge: "🌟 優秀賞受賞",
         conferences_title: "過去の参加学会",
-        conference_item_1: "2025年8月　EC2025＠日本大学文理学部百周年記念館<br>CatcherX: すべての球種を再現するVR捕球シミュレータ（一般口頭・デモ発表）",
-        conference_item_2: "2024年9月　EC2024＠北海道情報大学<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（デモ発表）",
-        conference_item_3: "2024年8月　SIGMUS141＠駒澤大学<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲームの試作（デモ発表）",
+        conference_item_1: "2025年8月　EC2025＠日本大学文理学部百周年記念館<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>CatcherX: すべての球種を再現するVR捕球シミュレータ（一般口頭・デモ発表）</a>",
+        conference_item_2: "2024年9月　EC2024＠北海道情報大学<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（デモ発表）</a>",
+        conference_item_3: "2024年8月　SIGMUS141＠駒澤大学<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲームの試作（デモ発表）</a>",
         presentations_title: "過去の対外発表",
-        presentation_item_1: "2025年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度冬季中間発表<br>Catcher τείχος β: ボールを後ろに逸らさないVR捕球シミュレータの開発",
-        presentation_item_2: "2025年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度夏季中間発表<br>CatcherX: すべての球種を再現するVR捕球シミュレータ",
-        presentation_item_3: "2024年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度冬季中間発表<br>Marvelica: 演奏表現可能なマーブルアニメーション",
-        presentation_item_4: "2024年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度夏季中間発表<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム",
+        presentation_item_1: "2025年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度冬季中間発表<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>Catcher τείχος β: ボールを後ろに逸らさないVR捕球シミュレータの開発</a>",
+        presentation_item_2: "2025年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度夏季中間発表<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>CatcherX: すべての球種を再現するVR捕球シミュレータ</a>",
+        presentation_item_3: "2024年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度冬季中間発表<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>Marvelica: 演奏表現可能なマーブルアニメーション</a>",
+        presentation_item_4: "2024年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度夏季中間発表<br><a href='#' target='_blank' rel='noopener noreferrer' class='academic-link'>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム</a>",
         sns_title: "SNS",
         gallery_title: "ギャラリー",
         footer_text: "© 2025 山口 瑞悠 All Rights Reserved."

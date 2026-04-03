@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>山口 瑞悠のホームページ</title>
+  <title data-i18n="page_title">山口 瑞悠のホームページ</title>
   
   <link rel="icon" href="main.png">
   <link rel="apple-touch-icon" href="main.png">
@@ -19,6 +19,32 @@
       background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
       min-height: 100%;
     }
+
+    /* 言語切り替え */
+    .lang-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 5px 10px;
+      border-radius: 15px;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: #1e3a8a;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 5px;
+      transition: color 0.3s;
+    }
+    .lang-btn:hover { color: #0ea5e9; }
+    .lang-btn.active { color: #0ea5e9; text-decoration: underline; }
 
     html {
       height: 100%;
@@ -357,69 +383,74 @@
    </svg>
   </div>
   <div class="container">
+   <div class="lang-switcher">
+     <button id="lang-ja" class="lang-btn active">JP</button>
+     <span>/</span>
+     <button id="lang-en" class="lang-btn">EN</button>
+   </div>
    <header>
-    <h1 id="main-title">山口 瑞悠</h1>
-    <p class="subtitle" id="subtitle">エンタテインメント・VR・音楽情報処理</p>
+    <h1 id="main-title" data-i18n="main_title">山口 瑞悠</h1>
+    <p class="subtitle" id="subtitle" data-i18n="subtitle">エンタテインメント・VR・音楽情報処理</p>
     <nav class="navigation">
-        <a href="#about-section" class="nav-link">プロフィール</a>
-        <a href="#career-section" class="nav-link">経歴</a>
-        <a href="#publications-section" class="nav-link">発表論文</a>
-        <a href="#awards-section" class="nav-link">受賞歴</a>
-        <a href="#conferences-section" class="nav-link">学会参加</a>
-        <a href="#presentations-section" class="nav-link">対外発表</a>
-        <a href="#sns-section" class="nav-link">SNS</a>
-        <a href="#gallery-section" class="nav-link">ギャラリー</a>
+        <a href="#about-section" class="nav-link" data-i18n="nav_profile">プロフィール</a>
+        <a href="#career-section" class="nav-link" data-i18n="nav_career">経歴</a>
+        <a href="#publications-section" class="nav-link" data-i18n="nav_publications">発表論文</a>
+        <a href="#awards-section" class="nav-link" data-i18n="nav_awards">受賞歴</a>
+        <a href="#conferences-section" class="nav-link" data-i18n="nav_conferences">学会参加</a>
+        <a href="#presentations-section" class="nav-link" data-i18n="nav_presentations">対外発表</a>
+        <a href="#sns-section" class="nav-link" data-i18n="nav_sns">SNS</a>
+        <a href="#gallery-section" class="nav-link" data-i18n="nav_gallery">ギャラリー</a>
     </nav>
    </header>
    <main>
     <section class="section" id="about-section">
-      <h2><span class="section-icon">👤</span><span id="about-title">プロフィール</span></h2>
+      <h2><span class="section-icon">👤</span><span id="about-title" data-i18n="about_title">プロフィール</span></h2>
       <div class="about-content">
         <img src="20250910_215900.JPG" alt="山口 瑞悠のプロフィール写真" class="profile-image">
         <div>
-          <p>2005年8月30日，三重県鈴鹿市生まれ．</p>
-          <p>座右の銘：守備こそ最大の攻撃</p>
-          <p>三重県立津高等学校時代に培った感性を原点に，現在は「技術がいかに人の心を動かすか」というエンタテインメントコンピューティングの可能性を探求中．音楽情報処理への興味から始まった私の旅は，VR技術を用いた身体的かつ没入感のある体験創出へとその領域を拡張しています．</p>
-          <p>福知山公立大学 橋田光代研究室および関西学院大学 片寄晴弘研究室にて，HIF（Human Information Framework）に基づくインタラクティブシステムの研究開発に従事．特にVRを用いた野球捕球シミュレータ「CatcherX」の開発など，デジタルとフィジカルの境界を溶かすような，次世代のエンタテインメント体験のデザインに情熱を注いでいます．</p>
+          <p data-i18n="about_bio_1">2005年8月30日，三重県鈴鹿市生まれ．</p>
+          <p data-i18n="about_bio_2">座右の銘：守備こそ最大の攻撃</p>
+          <p data-i18n="about_bio_3">三重県立津高等学校時代に培った感性を原点に，現在は「技術がいかに人の心を動かすか」というエンタテインメントコンピューティングの可能性を探求中．音楽情報処理への興味から始まった私の旅は，VR技術を用いた身体的かつ没入感のある体験創出へとその領域を拡張しています．</p>
+          <p data-i18n="about_bio_4">福知山公立大学 橋田光代研究室および関西学院大学 片寄晴弘研究室にて，HIF（Human Information Framework）に基づくインタラクティブシステムの研究開発に従事．特にVRを用いた野球捕球シミュレータ「CatcherX」の開発など，デジタルとフィジカルの境界を溶かすような，次世代のエンタテインメント体験のデザインに情熱を注いでいます．</p>
         </div>
       </div>
     </section>
 
     <section class="section" id="career-section">
-      <h2><span class="section-icon">📚</span><span id="career-title">経歴</span></h2>
+      <h2><span class="section-icon">📚</span><span id="career-title" data-i18n="career_title">経歴</span></h2>
       <ul>
-       <li>2024年3月　三重県立津高等学校　卒業</li>
-       <li>2024年4月　福知山公立大学情報学部 情報学科　入学　同時に橋田光代研究室配属</li>
-       <li>2024年9月　関西学院大学工学部 情報工学課程 片寄晴弘研究室外部研究員</li>
+       <li data-i18n="career_item_1">2024年3月　三重県立津高等学校　卒業</li>
+       <li data-i18n="career_item_2">2024年4月　福知山公立大学情報学部 情報学科　入学　同時に橋田光代研究室配属</li>
+       <li data-i18n="career_item_3">2024年9月　関西学院大学工学部 情報工学課程 片寄晴弘研究室外部研究員</li>
       </ul>
     </section>
 
     <section class="section" id="publications-section">
-      <h2><span class="section-icon">📝</span><span id="publications-title">発表論文</span></h2>
+      <h2><span class="section-icon">📝</span><span id="publications-title" data-i18n="publications_title">発表論文</span></h2>
       <ul>
-       <li>CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</li>
-       <li>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（EC2024＠北海道情報大学）</li>
+       <li data-i18n="publication_item_1">CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</li>
+       <li data-i18n="publication_item_2">ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（EC2024＠北海道情報大学）</li>
       </ul>
     </section>
 
     <section class="section" id="awards-section">
-      <h2><span class="section-icon">🏆</span><span id="awards-title">受賞歴</span></h2>
-      <p><strong>一般セッション優秀賞</strong><br>
+      <h2><span class="section-icon">🏆</span><span id="awards-title" data-i18n="awards_title">受賞歴</span></h2>
+      <p data-i18n="award_item_1_title"><strong>一般セッション優秀賞</strong><br>
        CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）</p>
-       <span class="award-badge">🌟 優秀賞受賞</span>
+       <span class="award-badge" data-i18n="award_item_1_badge">🌟 優秀賞受賞</span>
        <div class="section-image-container">
         <img src="742b483039be38332a23b0fce3356a90-722x1024.jpg" alt="受賞時の写真" class="section-image">
        </div>
     </section>
 
     <section class="section" id="conferences-section">
-      <h2><span class="section-icon">🎓</span><span id="conferences-title">過去の参加学会</span></h2>
+      <h2><span class="section-icon">🎓</span><span id="conferences-title" data-i18n="conferences_title">過去の参加学会</span></h2>
       <ul>
-       <li>2025年8月　EC2025＠日本大学文理学部百周年記念館<br>
+       <li data-i18n="conference_item_1">2025年8月　EC2025＠日本大学文理学部百周年記念館<br>
         CatcherX: すべての球種を再現するVR捕球シミュレータ（一般口頭・デモ発表）</li>
-       <li>2024年9月　EC2024＠北海道情報大学<br>
+       <li data-i18n="conference_item_2">2024年9月　EC2024＠北海道情報大学<br>
         ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（デモ発表）</li>
-       <li>2024年8月　SIGMUS141＠駒澤大学<br>
+       <li data-i18n="conference_item_3">2024年8月　SIGMUS141＠駒澤大学<br>
         ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲームの試作（デモ発表）</li>
       </ul>
       <div class="section-image-container">
@@ -428,15 +459,15 @@
     </section>
 
     <section class="section" id="presentations-section">
-      <h2><span class="section-icon">💬</span><span id="presentations-title">過去の対外発表</span></h2>
+      <h2><span class="section-icon">💬</span><span id="presentations-title" data-i18n="presentations_title">過去の対外発表</span></h2>
       <ul>
-       <li>2025年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度冬季中間発表<br>
+       <li data-i18n="presentation_item_1">2025年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度冬季中間発表<br>
         Catcher τείχος β: ボールを後ろに逸らさないVR捕球シミュレータの開発</li>
-       <li>2025年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度夏季中間発表<br>
+       <li data-i18n="presentation_item_2">2025年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度夏季中間発表<br>
         CatcherX: すべての球種を再現するVR捕球シミュレータ</li>
-       <li>2024年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度冬季中間発表<br>
+       <li data-i18n="presentation_item_3">2024年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度冬季中間発表<br>
         Marvelica: 演奏表現可能なマーブルアニメーション</li>
-       <li>2024年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度夏季中間発表<br>
+       <li data-i18n="presentation_item_4">2024年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度夏季中間発表<br>
         ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム</li>
       </ul>
       <div class="section-image-container">
@@ -445,13 +476,13 @@
     </section>
 
     <section class="section" id="sns-section">
-      <h2><span class="section-icon">🔗</span><span id="sns-title">SNS</span></h2>
+      <h2><span class="section-icon">🔗</span><span id="sns-title" data-i18n="sns_title">SNS</span></h2>
       <div class="sns-links"><a href="https://x.com/Ryu_mei1537" target="_blank" rel="noopener noreferrer" class="sns-button"> <span class="sns-icon">𝕏</span> <span class="sns-name">X (Twitter)</span> </a> <a href="https://www.instagram.com/miyu.0830_y" target="_blank" rel="noopener noreferrer" class="sns-button"> <span class="sns-icon">📷</span> <span class="sns-name">Instagram</span> </a> <a href="https://github.com/Ryu-mei-15" target="_blank" rel="noopener noreferrer" class="sns-button"> <span class="sns-icon">💻</span> <span class="sns-name">GitHub</span> </a>
       </div>
     </section>
 
     <section class="section" id="gallery-section">
-        <h2><span class="section-icon">📸</span>ギャラリー</h2>
+        <h2><span class="section-icon">📸</span><span data-i18n="gallery_title">ギャラリー</span></h2>
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <img src="1694243037224.jpg" alt="ギャラリー画像1">
@@ -481,11 +512,12 @@
     </section>
    </main>
    <footer>
-    <p>© 2025 山口 瑞悠 All Rights Reserved.</p>
+    <p data-i18n="footer_text">© 2025 山口 瑞悠 All Rights Reserved.</p>
    </footer>
   </div>
   
   <script>
+    // Slideshow script
     let slideIndex = 0;
     showSlides();
 
@@ -500,6 +532,122 @@
       slides[slideIndex-1].style.display = "block";
       setTimeout(showSlides, 4000); // 4秒ごとに切り替わる設定
     }
+  </script>
+
+  <script>
+    // Language switcher script
+    const translations = {
+      en: {
+        page_title: "Miyu Yamaguchi's Homepage",
+        main_title: "Miyu Yamaguchi",
+        subtitle: "Entertainment, VR, Music Information Processing",
+        nav_profile: "Profile",
+        nav_career: "Career",
+        nav_publications: "Publications",
+        nav_awards: "Awards",
+        nav_conferences: "Conferences",
+        nav_presentations: "Presentations",
+        nav_sns: "SNS",
+        nav_gallery: "Gallery",
+        about_title: "Profile",
+        about_bio_1: "Born on August 30, 2005, in Suzuka City, Mie Prefecture.",
+        about_bio_2: "Motto: The best offense is a good defense.",
+        about_bio_3: "Starting with the sensibilities I cultivated during my time at Mie Prefectural Tsu High School, I am currently exploring the potential of entertainment computing, focusing on 'how technology can move people's hearts.' My journey, which began with an interest in music information processing, has expanded into creating physical and immersive experiences using VR technology.",
+        about_bio_4: "At the University of Fukuchiyama's Mitsuyo Hashida Laboratory and Kwansei Gakuin University's Haruhiro Katayose Laboratory, I am engaged in the research and development of interactive systems based on the HIF (Human Information Framework). I am particularly passionate about designing next-generation entertainment experiences that blur the lines between digital and physical, such as the development of the VR baseball catching simulator 'CatcherX'.",
+        career_title: "Career",
+        career_item_1: "March 2024: Graduated from Mie Prefectural Tsu High School.",
+        career_item_2: "April 2024: Enrolled in the Department of Informatics, Faculty of Informatics, University of Fukuchiyama. Simultaneously assigned to the Mitsuyo Hashida Laboratory.",
+        career_item_3: "September 2024: External Researcher at the Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University.",
+        publications_title: "Publications",
+        publication_item_1: "CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (EC2025 @ Nihon University, College of Humanities and Sciences Campus)",
+        publication_item_2: "An Active Sound Appreciation Game Using a Piano-type Pinball Machine (EC2024 @ Hokkaido Information University)",
+        awards_title: "Awards",
+        award_item_1_title: "<strong>Excellent Presentation Award, General Session</strong><br>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (EC2025 @ Nihon University, College of Humanities and Sciences Campus)",
+        award_item_1_badge: "🌟 Excellence Award Winner",
+        conferences_title: "Past Conferences",
+        conference_item_1: "August 2025: EC2025 @ Nihon University, College of Humanities and Sciences, Centennial Hall<br>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (Oral and Demo Presentation)",
+        conference_item_2: "September 2024: EC2024 @ Hokkaido Information University<br>An Active Sound Appreciation Game Using a Piano-type Pinball Machine (Demo Presentation)",
+        conference_item_3: "August 2024: SIGMUS141 @ Komazawa University<br>Prototype of an Active Sound Appreciation Game Using a Piano-type Pinball Machine (Demo Presentation)",
+        presentations_title: "Past Presentations",
+        presentation_item_1: "December 2025: 2025 Winter Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br>Catcher τείχος β: Development of a VR Catching Simulator to Prevent Passed Balls",
+        presentation_item_2: "August 2025: 2025 Summer Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types",
+        presentation_item_3: "December 2024: 2024 Winter Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br>Marvelica: A Marble Animation Capable of Musical Expression",
+        presentation_item_4: "August 2024: 2024 Summer Interim Presentation, Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University<br>An Active Sound Appreciation Game Using a Piano-type Pinball Machine",
+        sns_title: "SNS",
+        gallery_title: "Gallery",
+        footer_text: "© 2025 Miyu Yamaguchi All Rights Reserved."
+      },
+      ja: {
+        page_title: "山口 瑞悠のホームページ",
+        main_title: "山口 瑞悠",
+        subtitle: "エンタテインメント・VR・音楽情報処理",
+        nav_profile: "プロフィール",
+        nav_career: "経歴",
+        nav_publications: "発表論文",
+        nav_awards: "受賞歴",
+        nav_conferences: "学会参加",
+        nav_presentations: "対外発表",
+        nav_sns: "SNS",
+        nav_gallery: "ギャラリー",
+        about_title: "プロフィール",
+        about_bio_1: "2005年8月30日，三重県鈴鹿市生まれ．",
+        about_bio_2: "座右の銘：守備こそ最大の攻撃",
+        about_bio_3: "三重県立津高等学校時代に培った感性を原点に，現在は「技術がいかに人の心を動かすか」というエンタテインメントコンピューティングの可能性を探求中．音楽情報処理への興味から始まった私の旅は，VR技術を用いた身体的かつ没入感のある体験創出へとその領域を拡張しています．",
+        about_bio_4: "福知山公立大学 橋田光代研究室および関西学院大学 片寄晴弘研究室にて，HIF（Human Information Framework）に基づくインタラクティブシステムの研究開発に従事．特にVRを用いた野球捕球シミュレータ「CatcherX」の開発など，デジタルとフィジカルの境界を溶かすような，次世代のエンタテインメント体験のデザインに情熱を注いでいます．",
+        career_title: "経歴",
+        career_item_1: "2024年3月　三重県立津高等学校　卒業",
+        career_item_2: "2024年4月　福知山公立大学情報学部 情報学科　入学　同時に橋田光代研究室配属",
+        career_item_3: "2024年9月　関西学院大学工学部 情報工学課程 片寄晴弘研究室外部研究員",
+        publications_title: "発表論文",
+        publication_item_1: "CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）",
+        publication_item_2: "ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（EC2024＠北海道情報大学）",
+        awards_title: "受賞歴",
+        award_item_1_title: "<strong>一般セッション優秀賞</strong><br>CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）",
+        award_item_1_badge: "🌟 優秀賞受賞",
+        conferences_title: "過去の参加学会",
+        conference_item_1: "2025年8月　EC2025＠日本大学文理学部百周年記念館<br>CatcherX: すべての球種を再現するVR捕球シミュレータ（一般口頭・デモ発表）",
+        conference_item_2: "2024年9月　EC2024＠北海道情報大学<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（デモ発表）",
+        conference_item_3: "2024年8月　SIGMUS141＠駒澤大学<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲームの試作（デモ発表）",
+        presentations_title: "過去の対外発表",
+        presentation_item_1: "2025年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度冬季中間発表<br>Catcher τείχος β: ボールを後ろに逸らさないVR捕球シミュレータの開発",
+        presentation_item_2: "2025年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度夏季中間発表<br>CatcherX: すべての球種を再現するVR捕球シミュレータ",
+        presentation_item_3: "2024年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度冬季中間発表<br>Marvelica: 演奏表現可能なマーブルアニメーション",
+        presentation_item_4: "2024年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度夏季中間発表<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム",
+        sns_title: "SNS",
+        gallery_title: "ギャラリー",
+        footer_text: "© 2025 山口 瑞悠 All Rights Reserved."
+      }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const translation = translations[lang]?.[key];
+        if (translation) {
+          if (el.tagName === 'TITLE') {
+            el.textContent = translation;
+          } else if (/<[a-z][\s\S]*>/i.test(translation)) {
+            el.innerHTML = translation;
+          } else {
+            el.textContent = translation;
+          }
+        }
+      });
+      document.getElementById('lang-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('lang-ja').addEventListener('click', () => setLanguage('ja'));
+      document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+
+      const preferredLanguage = localStorage.getItem('preferredLanguage');
+      const browserLanguage = navigator.language.split('-')[0];
+      const initialLang = preferredLanguage || (browserLanguage === 'en' ? 'en' : 'ja');
+      setLanguage(initialLang);
+    });
   </script>
 
   <script>

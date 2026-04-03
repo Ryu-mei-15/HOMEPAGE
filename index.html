@@ -111,8 +111,8 @@
     }
 
     h1 {
-      font-size: 80px;
-      font-weight: 800;
+      font-size: 100px; /* 初期サイズを大きく */
+      font-weight: 900; /* より太く力強く */
       letter-spacing: 0.05em;
       margin: 0 0 15px 0;
       color: #1e3a8a;
@@ -225,7 +225,7 @@
       border-bottom: none;
     }
 
-    /* ★ 変更：学術タグバッジ用のスタイル（リンク化対応） */
+    /* 学術タグバッジ用のスタイル */
     .tag-badge {
       display: inline-block;
       border: 1px solid #9ca3af;
@@ -237,7 +237,7 @@
       background-color: #ffffff;
       transition: all 0.2s ease;
       line-height: 1.4;
-      text-decoration: none; /* リンクの下線を消す */
+      text-decoration: none;
     }
 
     a.tag-badge:hover {
@@ -262,6 +262,24 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       border: 5px solid white;
       flex-shrink: 0;
+    }
+
+    /* ★ 追加：プロフィール名のスタイル */
+    .profile-name {
+      font-size: 28px;
+      font-weight: 800;
+      color: #1e3a8a;
+      margin-top: 0;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 10px;
+    }
+    
+    .profile-name-en {
+      font-size: 16px;
+      font-weight: 500;
+      color: #6b7280;
+      margin-left: 15px;
     }
 
     /* 各セクション内の画像スタイル */
@@ -376,7 +394,6 @@
 
     /* レスポンシブ対応 */
     @media (max-width: 768px) {
-      h1 { font-size: 48px; }
       .subtitle { font-size: 16px; }
       .section h2 { font-size: 24px; }
       .section p, .section ul { font-size: 14px; }
@@ -388,6 +405,11 @@
       .profile-image {
           width: 150px;
           height: 150px;
+      }
+      .profile-name-en {
+          display: block;
+          margin-left: 0;
+          margin-top: 5px;
       }
     }
   </style>
@@ -427,6 +449,8 @@
       <div class="about-content">
         <img src="20250910_215900.JPG" alt="山口 瑞悠のプロフィール写真" class="profile-image">
         <div>
+          <!-- ★ 追加：名前（漢字・ローマ字）の表示領域 -->
+          <div data-i18n="about_name"></div>
           <p data-i18n="about_bio_1">2005年8月30日，三重県鈴鹿市生まれ．</p>
           <p data-i18n="about_bio_2">座右の銘：守備こそ最大の攻撃</p>
           <p data-i18n="about_bio_3">三重県立津高等学校時代に培った感性を原点に，現在は「技術がいかに人の心を動かすか」というエンタテインメントコンピューティングの可能性を探求中．音楽情報処理への興味から始まった私の旅は，VR技術を用いた身体的かつ没入感のある体験創出へとその領域を拡張しています．</p>
@@ -561,6 +585,10 @@
         nav_sns: "SNS",
         nav_gallery: "Gallery",
         about_title: "Profile",
+        
+        /* ★ 追加：英語プロフィール用の名前 */
+        about_name: "<h3 class='profile-name'>Miyu Yamaguchi<span class='profile-name-en'>山口 瑞悠</span></h3>",
+        
         about_bio_1: "Born on August 30, 2005, in Suzuka City, Mie Prefecture.",
         about_bio_2: "Motto: The best offense is a good defense.",
         about_bio_3: "Starting with the sensibilities I cultivated during my time at Mie Prefectural Tsu High School, I am currently exploring the potential of entertainment computing, focusing on 'how technology can move people's hearts.' My journey, which began with an interest in music information processing, has expanded into creating physical and immersive experiences using VR technology.",
@@ -571,7 +599,6 @@
         career_item_3: "September 2024: External Researcher at the Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University.",
         publications_title: "Publications",
         
-        /* ★ 変更箇所：テキストはそのまま、バッジのみをリンク化 */
         publication_item_1: "CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (EC2025 @ Nihon University)<div class='mt-1'><a href='https://ipsj.ixsq.nii.ac.jp/records/2003671' target='_blank' rel='noopener noreferrer' class='tag-badge'>Paper</a></div>",
         publication_item_2: "An Active Sound Appreciation Game Using a Piano-type Pinball Machine (EC2024 @ Hokkaido Information University)<div class='mt-1'><a href='https://ipsj.ixsq.nii.ac.jp/records/238787' target='_blank' rel='noopener noreferrer' class='tag-badge'>Paper</a></div>",
         awards_title: "Awards",
@@ -579,13 +606,11 @@
         award_item_1_badge: "🌟 Excellence Award Winner",
         conferences_title: "Past Conferences",
         
-        /* ★ 変更箇所：ルール通りにバッジの出し分けとリンク化 */
         conference_item_1: "August 2025: EC2025 @ Nihon University, Centennial Hall<br>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types<div class='mt-1'><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         conference_item_2: "September 2024: EC2024 @ Hokkaido Information University<br>An Active Sound Appreciation Game Using a Piano-type Pinball Machine<div class='mt-1'><a href='https://ec2024.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://ec2024.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         conference_item_3: "August 2024: SIGMUS141 @ Komazawa University<br>Prototype of an Active Sound Appreciation Game Using a Piano-type Pinball Machine<div class='mt-1'><a href='https://www.ipsj.or.jp/kenkyukai/event/mus141.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://www.ipsj.or.jp/kenkyukai/event/mus141.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         presentations_title: "Past Presentations",
         
-        /* ★ 変更箇所：ルール通りにバッジの出し分けとリンク化 */
         presentation_item_1: "December 2025: 2025 Winter Interim Presentation, Haruhiro Katayose Lab<br>Catcher τείχος β: Development of a VR Catching Simulator to Prevent Passed Balls<div class='mt-1'><a href='https://ist.ksc.kwansei.ac.jp/~katayose/public_seminar/2025winter.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a></div>",
         presentation_item_2: "August 2025: 2025 Summer Interim Presentation, Haruhiro Katayose Lab<br>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types<div class='mt-1'><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         presentation_item_3: "December 2024: 2024 Winter Interim Presentation, Haruhiro Katayose Lab<br>Marvelica: A Marble Animation Capable of Musical Expression<div class='mt-1'><a href='https://ist.ksc.kwansei.ac.jp/~katayose/public_seminar/2024winter.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a></div>",
@@ -607,6 +632,10 @@
         nav_sns: "SNS",
         nav_gallery: "ギャラリー",
         about_title: "プロフィール",
+        
+        /* ★ 追加：日本語プロフィール用の名前 */
+        about_name: "<h3 class='profile-name'>山口 瑞悠<span class='profile-name-en'>Miyu Yamaguchi</span></h3>",
+        
         about_bio_1: "2005年8月30日，三重県鈴鹿市生まれ．",
         about_bio_2: "座右の銘：守備こそ最大の攻撃",
         about_bio_3: "三重県立津高等学校時代に培った感性を原点に，現在は「技術がいかに人の心を動かすか」というエンタテインメントコンピューティングの可能性を探求中．音楽情報処理への興味から始まった私の旅は，VR技術を用いた身体的かつ没入感のある体験創出へとその領域を拡張しています．",
@@ -617,7 +646,6 @@
         career_item_3: "2024年9月　関西学院大学工学部 情報工学課程 片寄晴弘研究室外部研究員",
         publications_title: "発表論文",
         
-        /* ★ 変更箇所：テキストはそのまま、バッジのみをリンク化 */
         publication_item_1: "CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）<div class='mt-1'><a href='https://ipsj.ixsq.nii.ac.jp/records/238787' target='_blank' rel='noopener noreferrer' class='tag-badge'>Paper</a></div>",
         publication_item_2: "ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（EC2024＠北海道情報大学）<div class='mt-1'><a href='https://ipsj.ixsq.nii.ac.jp/records/2003671' target='_blank' rel='noopener noreferrer' class='tag-badge'>Paper</a></div>",
         awards_title: "受賞歴",
@@ -625,19 +653,17 @@
         award_item_1_badge: "🌟 優秀賞受賞",
         conferences_title: "過去の参加学会",
         
-        /* ★ 変更箇所：ルール通りにバッジの出し分けとリンク化 */
         conference_item_1: "2025年8月　EC2025＠日本大学文理学部百周年記念館<br>CatcherX: すべての球種を再現するVR捕球シミュレータ<div class='mt-1'><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         conference_item_2: "2024年9月　EC2024＠北海道情報大学<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム<div class='mt-1'><a href='https://ec2024.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://ec2024.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         conference_item_3: "2024年8月　SIGMUS141＠駒澤大学<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲームの試作<div class='mt-1'><a href='https://www.ipsj.or.jp/kenkyukai/event/mus141.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://www.ipsj.or.jp/kenkyukai/event/mus141.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         presentations_title: "過去の対外発表",
         
-        /* ★ 変更箇所：ルール通りにバッジの出し分けとリンク化 */
         presentation_item_1: "2025年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度冬季中間発表<br>Catcher τείχος β: ボールを後ろに逸らさないVR捕球シミュレータの開発<div class='mt-1'><a href='https://ist.ksc.kwansei.ac.jp/~katayose/public_seminar/2025winter.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a></div>",
         presentation_item_2: "2025年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度夏季中間発表<br>CatcherX: すべての球種を再現するVR捕球シミュレータ<div class='mt-1'><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         presentation_item_3: "2024年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度冬季中間発表<br>Marvelica: 演奏表現可能なマーブルアニメーション<div class='mt-1'><a href='https://ist.ksc.kwansei.ac.jp/~katayose/public_seminar/2024winter.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a></div>",
         presentation_item_4: "2024年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度夏季中間発表<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム<div class='mt-1'><a href='https://scrapbox.io/KMHF-JRP/2024_%E5%A4%8F%E3%81%AE%E5%90%88%E5%90%8C%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E4%BC%9A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://scrapbox.io/KMHF-JRP/2024_%E5%A4%8F%E3%81%AE%E5%90%88%E5%90%8C%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E4%BC%9A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://scrapbox.io/KMHF-JRP/2024_%E5%A4%8F%E3%81%AE%E5%90%88%E5%90%8C%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E4%BC%9A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         sns_title: "SNS",
-        gallery_title: "ギャラリー",
+        gallery_title: "Gallery",
         footer_text: "© 2025 山口 瑞悠 All Rights Reserved."
       }
     };
@@ -729,7 +755,8 @@
       h1Elements.forEach(el => {
         el.style.color = backgroundColor;
         el.style.fontFamily = `${fontFamily}, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`;
-        el.style.fontSize = `${fontSize * 5}px`;
+        /* ★ 変更：JS側でも文字サイズを大きくし、レスポンシブに対応させるclamp関数を使用 */
+        el.style.fontSize = `clamp(${fontSize * 3}px, 10vw, ${fontSize * 7}px)`;
       });
 
       const subtitleElements = document.querySelectorAll('.subtitle');

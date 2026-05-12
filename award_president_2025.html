@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ja">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="page_title">2025年度 学長褒章 受章 - 山口 瑞悠</title>
+  <link rel="icon" href="fig/main.png">
+  <link rel="apple-touch-icon" href="fig/main.png">
+  <style>
+    /* 共通基本設定（背景固定化） */
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%) fixed;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    * { box-sizing: border-box; }
+
+    /* 言語切り替えボタン */
+    .lang-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 5px 10px;
+      border-radius: 15px;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      z-index: 10;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: #1e3a8a;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 5px;
+      transition: color 0.3s;
+    }
+    .lang-btn:hover { color: #0ea5e9; }
+    .lang-btn.active { color: #0ea5e9; text-decoration: underline; }
+
+    /* 背景の浮遊シェイプ */
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .shape { position: absolute; opacity: 0.08; animation: float 20s infinite ease-in-out; }
+    .shape:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+    .shape:nth-child(2) { top: 60%; left: 80%; animation-delay: 5s; }
+    .shape:nth-child(3) { top: 30%; left: 60%; animation-delay: 10s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(30px, -30px) rotate(90deg); }
+      50% { transform: translate(-20px, 20px) rotate(180deg); }
+      75% { transform: translate(40px, 10px) rotate(270deg); }
+    }
+
+    /* サブページ用コンテナ */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* 戻るボタン */
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateX(-5px);
+    }
+
+    /* サブページ用ヘッダー */
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      font-size: 32px;
+      color: #1e3a8a;
+      margin: 0 0 10px 0;
+      line-height: 1.4;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: #0ea5e9;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* コンテンツセクション */
+    .section {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    .section h2 {
+      font-size: 24px;
+      color: #1e3a8a;
+      border-bottom: 3px solid #0ea5e9;
+      padding-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    
+    p { line-height: 1.8; font-size: 16px; }
+    
+    /* 画像コンテナ */
+    .image-container {
+      margin: 30px 0;
+      text-align: center;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      border: 1px solid #e5e7eb;
+    }
+
+    /* 受賞詳細ブロック */
+    .award-details {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #10b981; /* 学長褒章用のアクセントカラー（グリーン系） */
+      margin-bottom: 30px;
+    }
+    .award-details p {
+      margin: 5px 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: white;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 24px; }
+      .section { padding: 20px; }
+    }
+  </style>
+ </head>
+ <body>
+  <div class="floating-shapes">
+   <svg class="shape" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#ffffff" /></svg>
+   <svg class="shape" width="120" height="120" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="#ffffff" /></svg>
+   <svg class="shape" width="90" height="90" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="#ffffff" /></svg>
+  </div>
+  
+  <div class="container">
+    <div class="lang-switcher">
+      <button id="lang-ja" class="lang-btn active">JP</button>
+      <span>/</span>
+      <button id="lang-en" class="lang-btn">EN</button>
+    </div>
+
+    <a href="index.html#awards-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
+    
+    <header>
+      <div style="font-size: 40px; margin-bottom: 15px;">🏅</div>
+      <h1 data-i18n="header_title">2025年度 学長褒章</h1>
+      <p class="subtitle" data-i18n="header_subtitle">President's Award, University of Fukuchiyama</p>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="award-details">
+          <p><strong data-i18n="detail_label_1">授与年月：</strong> <span data-i18n="detail_val_1">2026年5月</span></p>
+          <p><strong data-i18n="detail_label_2">表彰機関：</strong> <span data-i18n="detail_val_2">福知山公立大学</span></p>
+          <p><strong data-i18n="detail_label_3">対象活動：</strong> <span data-i18n="detail_val_3">エンタテインメントコンピューティング分野における研究活動，および学外での優秀な成果（CatcherXの開発・EC2025優秀賞受賞など）</span></p>
+        </div>
+
+        <h2 data-i18n="section_title">受章の概要</h2>
+        <p data-i18n="section_p1">福知山公立大学より，2025年度における学術・課外活動の成果を評価され，「学長褒章」を受章いたしました．</p>
+        <p data-i18n="section_p2">HCI（Human-Computer Interaction）に基づくVR捕球シミュレータ「CatcherX」の研究開発や，エンタテインメントコンピューティング2025（EC2025）での一般セッション優秀賞受賞など，学外での積極的な研究発表を通じて大学の発展と名誉に貢献したことが評価の対象となりました．</p>
+        <p data-i18n="section_p3">この受章を励みとして，今後も「技術がいかに人の心を動かすか」を真摯に追求し，より高いレベルの研究成果を社会に発信できるよう取り組んでまいります．</p>
+        
+        <div class="image-container">
+          <p style="color:#666;" data-i18n="image_caption"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p data-i18n="footer_text">© 2025 山口 瑞悠 All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        page_title: "2025 President's Award - Miyu Yamaguchi",
+        back_btn: "⬅ Back to Home",
+        header_title: "2025 President's Award",
+        header_subtitle: "President's Award, University of Fukuchiyama",
+        detail_label_1: "Date of Award:",
+        detail_val_1: "May 2026",
+        detail_label_2: "Awarded by:",
+        detail_val_2: "The University of Fukuchiyama",
+        detail_label_3: "Target Activities:",
+        detail_val_3: "Research activities in the field of Entertainment Computing and outstanding achievements outside the university (e.g., development of CatcherX, receiving the EC2025 Excellence Award).",
+        section_title: "Overview of the Award",
+        section_p1: "I received the 'President's Award' from the University of Fukuchiyama in recognition of my academic and extracurricular achievements during the 2025 academic year.",
+        section_p2: "The award was granted for contributing to the development and honor of the university through active research presentations off-campus, including the development of the VR catching simulator 'CatcherX' based on HCI (Human-Computer Interaction) and winning the General Session Excellence Award at Entertainment Computing 2025 (EC2025).",
+        section_p3: "Encouraged by this award, I will continue to sincerely pursue 'how technology can move people's hearts' and strive to disseminate higher-level research results to society.",
+        image_caption: "(Photos from the ceremony will be posted here)",
+        footer_text: "© 2025 Miyu Yamaguchi All Rights Reserved."
+      },
+      ja: {
+        page_title: "2025年度 学長褒章 受章 - 山口 瑞悠",
+        back_btn: "⬅ トップページへ戻る",
+        header_title: "2025年度 学長褒章",
+        header_subtitle: "President's Award, University of Fukuchiyama",
+        detail_label_1: "授与年月：",
+        detail_val_1: "2026年5月",
+        detail_label_2: "表彰機関：",
+        detail_val_2: "福知山公立大学",
+        detail_label_3: "対象活動：",
+        detail_val_3: "エンタテインメントコンピューティング分野における研究活動，および学外での優秀な成果（CatcherXの開発・EC2025優秀賞受賞など）",
+        section_title: "受章の概要",
+        section_p1: "福知山公立大学より，2025年度における学術・課外活動の成果を評価され，「学長褒章」を受章いたしました．",
+        section_p2: "HCI（Human-Computer Interaction）に基づくVR捕球シミュレータ「CatcherX」の研究開発や，エンタテインメントコンピューティング2025（EC2025）での一般セッション優秀賞受賞など，学外での積極的な研究発表を通じて大学の発展と名誉に貢献したことが評価の対象となりました．",
+        section_p3: "この受章を励みとして，今後も「技術がいかに人の心を動かすか」を真摯に追求し，より高いレベルの研究成果を社会に発信できるよう取り組んでまいります．",
+        image_caption: "（ここに授与式の写真などを掲載予定）",
+        footer_text: "© 2025 山口 瑞悠 All Rights Reserved."
+      }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const translation = translations[lang]?.[key];
+        if (translation) {
+          if (el.tagName === 'TITLE') {
+            el.textContent = translation;
+          } else if (/<[a-z][\s\S]*>/i.test(translation)) {
+            el.innerHTML = translation;
+          } else {
+            el.textContent = translation;
+          }
+        }
+      });
+      document.getElementById('lang-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('lang-ja').addEventListener('click', () => setLanguage('ja'));
+      document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+      const preferredLanguage = localStorage.getItem('preferredLanguage');
+      const browserLanguage = navigator.language.split('-')[0];
+      const initialLang = preferredLanguage || (browserLanguage === 'en' ? 'en' : 'ja');
+      setLanguage(initialLang);
+    });
+  </script>
+ </body>
+</html>

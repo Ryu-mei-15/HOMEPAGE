@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ja">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="page_title">ピアノ型ピンボール盤を用いた能動的サウンド鑑賞ゲーム - 山口 瑞悠</title>
+  <link rel="icon" href="fig/main.png">
+  <link rel="apple-touch-icon" href="fig/main.png">
+  <style>
+    /* 共通基本設定（背景固定化） */
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%) fixed;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    * { box-sizing: border-box; }
+
+    /* 言語切り替えボタン */
+    .lang-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 5px 10px;
+      border-radius: 15px;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      z-index: 10;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: #1e3a8a;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 5px;
+      transition: color 0.3s;
+    }
+    .lang-btn:hover { color: #0ea5e9; }
+    .lang-btn.active { color: #0ea5e9; text-decoration: underline; }
+
+    /* 背景の浮遊シェイプ */
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .shape { position: absolute; opacity: 0.08; animation: float 20s infinite ease-in-out; }
+    .shape:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+    .shape:nth-child(2) { top: 60%; left: 80%; animation-delay: 5s; }
+    .shape:nth-child(3) { top: 30%; left: 60%; animation-delay: 10s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(30px, -30px) rotate(90deg); }
+      50% { transform: translate(-20px, 20px) rotate(180deg); }
+      75% { transform: translate(40px, 10px) rotate(270deg); }
+    }
+
+    /* サブページ用コンテナ */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* 戻るボタン */
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateX(-5px);
+    }
+
+    /* サブページ用ヘッダー */
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      font-size: 32px;
+      color: #1e3a8a;
+      margin: 0 0 10px 0;
+      line-height: 1.4;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: #0ea5e9;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* 技術スタックタグ */
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .tech-tag {
+      background: #f3f4f6;
+      color: #4b5563;
+      padding: 5px 15px;
+      border-radius: 15px;
+      font-size: 14px;
+      font-weight: bold;
+      border: 1px solid #e5e7eb;
+    }
+
+    /* コンテンツセクション */
+    .section {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    .section h2 {
+      font-size: 24px;
+      color: #1e3a8a;
+      border-bottom: 3px solid #0ea5e9;
+      padding-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    
+    p, li { line-height: 1.8; font-size: 16px; }
+    
+    /* 引用・ハイライト用ブロック */
+    .highlight-block {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #64748b;
+      margin: 20px 0;
+      color: #475569;
+    }
+
+    /* 関連リンクボタン */
+    .link-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #0ea5e9 0%, #1e3a8a 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+      margin-top: 20px;
+    }
+    .link-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: white;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 24px; }
+      .section { padding: 20px; }
+    }
+  </style>
+ </head>
+ <body>
+  <div class="floating-shapes">
+   <svg class="shape" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#ffffff" /></svg>
+   <svg class="shape" width="120" height="120" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="#ffffff" /></svg>
+   <svg class="shape" width="90" height="90" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="#ffffff" /></svg>
+  </div>
+  
+  <div class="container">
+    <div class="lang-switcher">
+      <button id="lang-ja" class="lang-btn active">JP</button>
+      <span>/</span>
+      <button id="lang-en" class="lang-btn">EN</button>
+    </div>
+
+    <a href="index.html#publications-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
+    
+    <header>
+      <h1 data-i18n="header_title">ピアノ型ピンボール盤を用いた<br>能動的サウンド鑑賞ゲーム</h1>
+      <p class="subtitle" data-i18n="header_subtitle">エンタテインメントコンピューティング2024 (EC2024)</p>
+      <div class="tech-tags">
+        <span class="tech-tag">HCI</span>
+        <span class="tech-tag">Hardware Hacking</span>
+        <span class="tech-tag">Max</span>
+        <span class="tech-tag">Acoustic Signal Processing</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h2 data-i18n="section_1_title">プロジェクトの概要</h2>
+        <p data-i18n="section_1_p1">実物を精巧に模したミニチュアピアノ（グランドピアニスト）を改造し，その独特な曲線の響板部分をピンボールの盤面に見立てたサウンド鑑賞ゲームです．</p>
+        <p data-i18n="section_1_p2">従来の「鍵盤を弾く」という操作は未経験者には難度が高いという課題に対し，単純なボールの射出操作と，壁の反射音でリズムを刻むことでメロディを進行させる「能動的な音楽鑑賞」の仕組みを提案しました．</p>
+      </section>
+
+      <section class="section">
+        <h2 data-i18n="section_2_title">システム構成</h2>
+        <ul data-i18n="section_2_ul">
+          <li><strong>ハードウェア改造：</strong> ミニチュアピアノ内部の電子基板を取り外し，響板内部にアクリル板でガイドレールや床面の傾斜を作成．ボールを射出するための手回し式の羽型パーツも自作しました．</li>
+          <li><strong>音響処理とリズム判定：</strong> ボールの反射音を指向性ピンマイクで収音し，ビジュアルプログラミング環境の「Max」を用いて音響信号のアタックを検出します．</li>
+          <li><strong>メロディの生成：</strong> 検出されたアタック回数や時間間隔（IOI）に従って，「Under the Sea」などの楽曲のテンポが定まり，短い音符列が再生されます．</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 data-i18n="section_3_title">試作からの考察と「QWOP」的な難易度</h2>
+        <div class="highlight-block" data-i18n="highlight_block">
+          <p>“操作自体は単純であってもクリアが難しいゲームとしてはQWOPの事例もあり、メロディがなかなか鳴らせないことが必ずしもマイナスになるとは考えていない。”</p>
+        </div>
+        <p data-i18n="section_3_p1">本システムは，鍵盤を弾かずともピアノでメロディを奏でる新しいアプローチを提示できましたが，実際の操作感としては，射出機構の力加減が非常にシビアでした．想定したルートに乗せるための物理的な操作難易度が高く，思い通りにメロディを長く鳴らすことは困難を極めました．</p>
+        <p data-i18n="section_3_p2">しかし，この単純な操作と極端に難しいクリア条件というギャップは，ある種の「不便益」や独特のゲーム性を生み出す要素でもあり，その後の研究プロセスにおける重要な学びとなっています．</p>
+        
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="https://ipsj.ixsq.nii.ac.jp/records/238787" target="_blank" rel="noopener noreferrer" class="link-btn" data-i18n="link_btn">情報処理学会 電子図書館で論文を見る</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p data-i18n="footer_text">© 2025 山口 瑞悠 All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        page_title: "Active Sound Appreciation Game Using a Piano-type Pinball Machine - Miyu Yamaguchi",
+        back_btn: "⬅ Back to Home",
+        header_title: "Active Sound Appreciation Game Using a<br>Piano-type Pinball Machine",
+        header_subtitle: "Entertainment Computing Symposium 2024 (EC2024)",
+        section_1_title: "Project Overview",
+        section_1_p1: "This project features a sound appreciation game that modifies a sophisticated miniature piano (Grand Pianist), repurposing its uniquely curved soundboard as a pinball table surface.",
+        section_1_p2: "Addressing the challenge that traditional keyboard performance is highly difficult for non-pianists, we proposed an 'active sound appreciation' mechanism where the user advances the melody by triggering rhythms through simple ball ejection and wall reflections.",
+        section_2_title: "System Configuration",
+        section_2_ul: "<li><strong>Hardware Modification:</strong> Removed internal circuit boards and power supplies from the miniature piano, installing acrylic guide rails and a sloped floor inside the soundboard. Hand-operated wing-shaped parts were created to eject the ball.</li><li><strong>Acoustic Processing & Rhythm Detection:</strong> Reflection sounds are picked up by a directional clip-on microphone. The system uses 'Max' to detect attacks from the acoustic signal input.</li><li><strong>Melody Generation:</strong> Based on the number of detected attacks and the Inter-Onset Interval (IOI), the playback tempo of songs like 'Under the Sea' is determined, triggering the corresponding note sequences.</li>",
+        section_3_title: "Discussion and 'QWOP'-like Difficulty",
+        highlight_block: "<p>“There is the case of QWOP as a game that is difficult to clear despite its simple controls, and I do not believe that the difficulty of playing the melody is necessarily a negative aspect.”</p>",
+        section_3_p1: "While the system presented a new way to 'play the piano' without using the keyboard, the actual operational feel was extremely sensitive regarding the force applied to the ejection mechanism. The physical difficulty of putting the ball on the intended route made it difficult to sustain the melody as planned.",
+        section_3_p2: "However, this gap between simple controls and extreme difficulty creates a form of 'benefit of inconvenience' and unique gameplay. This experience has become a valuable lesson in the subsequent research process.",
+        link_btn: "View Paper in IPSJ Digital Library ➡",
+        footer_text: "© 2025 Miyu Yamaguchi All Rights Reserved."
+      },
+      ja: {
+        page_title: "ピアノ型ピンボール盤を用いた能動的サウンド鑑賞ゲーム - 山口 瑞悠",
+        back_btn: "⬅ トップページへ戻る",
+        header_title: "ピアノ型ピンボール盤を用いた<br>能動的サウンド鑑賞ゲーム",
+        header_subtitle: "エンタテインメントコンピューティング2024 (EC2024)",
+        section_1_title: "プロジェクトの概要",
+        section_1_p1: "実物を精巧に模したミニチュアピアノ（グランドピアニスト）を改造し，その独特な曲線の響板部分をピンボールの盤面に見立てたサウンド鑑賞ゲームです．",
+        section_1_p2: "従来の「鍵盤を弾く」という操作は未経験者には難度が高いという課題に対し，単純なボールの射出操作と，壁の反射音でリズムを刻むことでメロディを進行させる「能動的な音楽鑑賞」の仕組みを提案しました．",
+        section_2_title: "システム構成",
+        section_2_ul: "<li><strong>ハードウェア改造：</strong> ミニチュアピアノ内部の電子基板を取り外し，響板内部にアクリル板でガイドレールや床面の傾斜を作成．ボールを射出するための手回し式の羽型パーツも自作しました．</li><li><strong>音響処理とリズム判定：</strong> ボールの反射音を指向性ピンマイクで収音し，ビジュアルプログラミング環境の「Max」を用いて音響信号のアタックを検出します．</li><li><strong>メロディの生成：</strong> 検出されたアタック回数や時間間隔（IOI）に従って，「Under the Sea」などの楽曲のテンポが定まり，短い音符列が再生されます．</li>",
+        section_3_title: "試作からの考察と「QWOP」的な難易度",
+        highlight_block: "<p>“操作自体は単純であってもクリアが難しいゲームとしてはQWOPの事例もあり、メロディがなかなか鳴らせないことが必ずしもマイナスになるとは考えていない。”</p>",
+        section_3_p1: "本システムは，鍵盤を弾かずともピアノでメロディを奏でる新しいアプローチを提示できましたが，実際の操作感としては，射出機構の力加減が非常にシビアでした．想定したルートに乗せるための物理的な操作難易度が高く，思い通りにメロディを長く鳴らすことは困難を極めました．",
+        section_3_p2: "しかし，この単純な操作と極端に難しいクリア条件というギャップは，ある種の「不便益」や独特のゲーム性を生み出す要素でもあり ，その後の研究プロセスにおける重要な学びとなっています．",
+        link_btn: "情報処理学会 電子図書館で論文を見る ➡",
+        footer_text: "© 2025 山口 瑞悠 All Rights Reserved."
+      }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const translation = translations[lang]?.[key];
+        if (translation) {
+          if (el.tagName === 'TITLE') {
+            el.textContent = translation;
+          } else if (/<[a-z][\s\S]*>/i.test(translation)) {
+            el.innerHTML = translation;
+          } else {
+            el.textContent = translation;
+          }
+        }
+      });
+      document.getElementById('lang-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('lang-ja').addEventListener('click', () => setLanguage('ja'));
+      document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+      const preferredLanguage = localStorage.getItem('preferredLanguage');
+      const browserLanguage = navigator.language.split('-')[0];
+      const initialLang = preferredLanguage || (browserLanguage === 'en' ? 'en' : 'ja');
+      setLanguage(initialLang);
+    });
+  </script>
+ </body>
+</html>

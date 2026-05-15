@@ -209,7 +209,7 @@
     
     <header>
       <span class="news-tag" data-i18n="news_tag">Web</span>
-      <span class="news-date" data-i18n="news_date">2025.9.24</span>
+      <span class="news-date" data-i18n="news_date">2025.09.24</span>
       <h1 data-i18n="header_title">福知山公立大学公式HPにて<br>EC2025優秀賞の受賞記事が公開されました</h1>
     </header>
 
@@ -241,7 +241,6 @@
   </div>
 
   <script>
-    // 翻訳データ
     const translations = {
       en: {
         page_title: "Article on EC2025 Excellence Award Published on Fukuchiyama Public University Website - Miyu Yamaguchi",
@@ -273,7 +272,6 @@
       }
     };
 
-    // 言語切り替え関数
     function setLanguage(lang) {
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -291,15 +289,12 @@
       });
       document.getElementById('lang-ja').classList.toggle('active', lang === 'ja');
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      localStorage.setItem('preferredLanguage', lang); // 選択状態を保存
+      localStorage.setItem('preferredLanguage', lang);
     }
 
-    // 初期化
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('lang-ja').addEventListener('click', () => setLanguage('ja'));
       document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
-
-      // ローカルストレージから前回選択した言語を読み込む（メインページと連動）
       const preferredLanguage = localStorage.getItem('preferredLanguage');
       const browserLanguage = navigator.language.split('-')[0];
       const initialLang = preferredLanguage || (browserLanguage === 'en' ? 'en' : 'ja');

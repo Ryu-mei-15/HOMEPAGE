@@ -117,6 +117,28 @@
       margin: 0;
     }
 
+    /* 日付とタグのスタイル */
+    .news-date {
+      font-size: 16px;
+      color: #6b7280;
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .news-tag {
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    /* Awardタグ用のゴールド系カラー */
+    .award-tag {
+      background-color: #fbbf24;
+    }
+
     /* コンテンツセクション */
     .section {
       background: rgba(255, 255, 255, 0.95);
@@ -191,7 +213,10 @@
     <a href="index.html#awards-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
     
     <header>
-      <div style="font-size: 40px; margin-bottom: 15px;">🏆</div>
+      <span class="news-tag award-tag" data-i18n="news_tag_award">Award</span>
+      <span class="news-date" data-i18n="news_date_award">2025.08.31</span>
+
+      <div style="font-size: 40px; margin-top: 15px; margin-bottom: 15px;">🏆</div>
       <h1 data-i18n="header_title">エンタテインメントコンピューティング2025<br>一般セッション優秀賞</h1>
       <p class="subtitle" data-i18n="header_subtitle">Entertainment Computing 2025</p>
     </header>
@@ -224,6 +249,9 @@
       en: {
         page_title: "EC2025 General Session Excellence Award - Miyu Yamaguchi",
         back_btn: "⬅ Back to Home",
+        // タグと日付の英訳を追加
+        news_tag_award: "Award",
+        news_date_award: "August 31, 2025",
         header_title: "Entertainment Computing 2025<br>General Session Excellence Award",
         header_subtitle: "Entertainment Computing 2025",
         detail_label_1: "Awarded:",
@@ -240,6 +268,9 @@
       ja: {
         page_title: "EC2025 一般セッション優秀賞 受賞 - 山口 瑞悠",
         back_btn: "⬅ トップページへ戻る",
+        // タグと日付を追加
+        news_tag_award: "Award",
+        news_date_award: "2025.08.31",
         header_title: "エンタテインメントコンピューティング2025<br>一般セッション優秀賞",
         header_subtitle: "Entertainment Computing 2025",
         detail_label_1: "受賞年月：",

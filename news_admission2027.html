@@ -118,7 +118,7 @@
       display: block;
     }
     .news-tag {
-      background: #3b82f6; /* Media用のアクセントカラー */
+      background: #3b82f6;
       color: white;
       padding: 4px 12px;
       border-radius: 12px;
@@ -166,6 +166,22 @@
       border: 1px solid #e5e7eb;
     }
 
+    /* コメントブロック用スタイル（追加） */
+    .author-comment {
+      background-color: rgba(248, 249, 250, 0.8);
+      border-left: 5px solid #0056b3;
+      padding: 15px 20px;
+      margin-top: 30px;
+      text-align: left;
+      border-radius: 0 10px 10px 0;
+    }
+    .author-comment p {
+      margin: 0;
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
     footer {
       text-align: center;
       padding: 30px;
@@ -205,18 +221,24 @@
       <section class="section">
         <h2 data-i18n="section_title">概要</h2>
         <p data-i18n="section_p1">福知山公立大学が発行する「2027年度 入学案内パンフレット」の特集ページ<span class="feature-title">「全国から集まる学生たちの活躍」</span>において，私の活動がメイン記事として大きく掲載されました．</p>
-        <p data-i18n="section_p2">本記事はパンフレット内でも最大規模の扱いとなっており，VR捕球シミュレータ「CatcherX」の開発や，学会での受賞，そして本学での学びがいかに研究に結びついているかについて詳しく紹介していただいています．</p>
+        <p data-i18n="section_p2">本記事はパンフレット内でも最大規模の扱いとなっており，VRコンテンツ「CatcherX」の開発や，学会での受賞，そして本学での学びがいかに研究に結びついているかについて詳しく紹介していただいています．</p>
 
+        <!-- 画像エリアを更新 -->
         <div class="image-container">
-          <p style="color:#666;" data-i18n="image_placeholder">（ここにパンフレットの誌面写真などを掲載予定）</p>
+          <img src="fig/panf.png" alt="2027年度 入学案内パンフレット">
         </div>
 
         <p data-i18n="section_p3">大学の顔となる入学案内において，このように取り上げていただいたことを大変光栄に思います．この記事を通じて，本学の魅力やエンタテインメントコンピューティング研究の面白さが高校生や受験生の皆さんに伝わることを願っています．</p>
+
+        <!-- コメントエリアを追加 -->
+        <div class="author-comment">
+          <p data-i18n="author_comment">※ ここに，撮影時の裏話や記事に込めた思いなど，後日執筆予定のコメントが入ります（現在，鋭意思索中）．</p>
+        </div>
       </section>
     </main>
 
     <footer>
-      <p data-i18n="footer_text">© 2025 山口 瑞悠 All Rights Reserved.</p>
+      <p data-i18n="footer_text">© 2026 山口 瑞悠 All Rights Reserved.</p>
     </footer>
   </div>
 
@@ -230,10 +252,10 @@
         header_title: "Featured as the Main Article in the<br>2027 University Admission Guide",
         section_title: "Overview",
         section_p1: "My activities have been featured as the main article in the special section <span class='feature-title'>'Active Students Gathering from Across the Nation'</span> in the '2027 Admission Guide' published by the University of Fukuchiyama.",
-        section_p2: "This article is the largest feature in the brochure, providing an in-depth look at the development of the VR catching simulator 'CatcherX', recent conference awards, and how my studies at the university have fueled my research.",
-        image_placeholder: "(Photos of the brochure will be posted here)",
+        section_p2: "This article is the largest feature in the brochure, providing an in-depth look at the development of the VR content 'CatcherX', recent conference awards, and how my studies at the university have fueled my research.",
         section_p3: "I am deeply honored to be featured in the university's flagship recruitment brochure. I hope this article effectively communicates the appeal of our university and the excitement of Entertainment Computing research to high school students and prospective applicants.",
-        footer_text: "© 2025 Miyu Yamaguchi All Rights Reserved."
+        author_comment: "* A comment about behind-the-scenes stories and my passion for the article will be added here later (currently brainstorming).",
+        footer_text: "© 2026 Miyu Yamaguchi All Rights Reserved."
       },
       ja: {
         page_title: "2027年度 入学案内パンフレット掲載 - 山口 瑞悠",
@@ -243,10 +265,10 @@
         header_title: "2027年度 入学案内パンフレットの<br>メイン記事として掲載されました",
         section_title: "概要",
         section_p1: "福知山公立大学が発行する「2027年度 入学案内パンフレット」の特集ページ<span class='feature-title'>「全国から集まる学生たちの活躍」</span>において，私の活動がメイン記事として大きく掲載されました．",
-        section_p2: "本記事はパンフレット内でも最大規模の扱いとなっており，VR捕球シミュレータ「CatcherX」の開発や，学会での受賞，および本学での学びがいかに研究に結びついているかについて詳しく紹介していただいています．",
-        image_placeholder: "（ここにパンフレットの誌面写真などを掲載予定）",
+        section_p2: "本記事はパンフレット内でも最大規模の扱いとなっており，VRコンテンツ「CatcherX」の開発や，学会での受賞，および本学での学びがいかに研究に結びついているかについて詳しく紹介していただいています．",
         section_p3: "大学の顔となる入学案内において，このように取り上げていただいたことを大変光栄に思います．この記事を通じて，本学の魅力やエンタテインメントコンピューティング研究の面白さが高校生や受験生の皆さんに伝わることを願っています．",
-        footer_text: "© 2025 山口 瑞悠 All Rights Reserved."
+        author_comment: "※ ここに，撮影時の裏話や記事に込めた思いなど，後日執筆予定のコメントが入ります（現在，鋭意思索中）．",
+        footer_text: "© 2026 山口 瑞悠 All Rights Reserved."
       }
     };
 

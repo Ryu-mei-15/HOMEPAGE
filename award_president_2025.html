@@ -117,6 +117,28 @@
       margin: 0;
     }
 
+    /* 日付とタグのスタイル */
+    .news-date {
+      font-size: 16px;
+      color: #6b7280;
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .news-tag {
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    /* Awardタグ用のゴールド系カラー */
+    .award-tag {
+      background-color: #fbbf24;
+    }
+
     /* コンテンツセクション */
     .section {
       background: rgba(255, 255, 255, 0.95);
@@ -135,6 +157,18 @@
     }
     
     p { line-height: 1.8; font-size: 16px; }
+
+    /* コメント用ハイライトブロック */
+    .quote-block {
+      background: #f8fafc;
+      padding: 25px;
+      border-radius: 10px;
+      border-left: 4px solid #1e3a8a;
+      margin: 20px 0;
+      color: #334155;
+      font-size: 15px;
+      line-height: 1.9;
+    }
     
     /* 画像コンテナ */
     .image-container {
@@ -171,6 +205,7 @@
     @media (max-width: 768px) {
       h1 { font-size: 24px; }
       .section { padding: 20px; }
+      .quote-block { padding: 15px; font-size: 14px; }
     }
   </style>
  </head>
@@ -191,7 +226,10 @@
     <a href="index.html#awards-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
     
     <header>
-      <div style="font-size: 40px; margin-bottom: 15px;">🏅</div>
+      <span class="news-tag award-tag" data-i18n="news_tag_award">Award</span>
+      <span class="news-date" data-i18n="news_date_award">2026.05.12</span>
+
+      <div style="font-size: 40px; margin-top: 15px; margin-bottom: 15px;">🏅</div>
       <h1 data-i18n="header_title">2025年度 学長褒章</h1>
       <p class="subtitle" data-i18n="header_subtitle">President's Award, University of Fukuchiyama</p>
     </header>
@@ -204,13 +242,26 @@
           <p><strong data-i18n="detail_label_3">対象活動：</strong> <span data-i18n="detail_val_3">エンタテインメントコンピューティング分野における研究活動，および学外での優秀な成果（CatcherXの開発・EC2025優秀賞受賞など）</span></p>
         </div>
 
-        <h2 data-i18n="section_title">受章の概要</h2>
+        <h2 data-i18n="section_title">受賞の概要</h2>
         <p data-i18n="section_p1">福知山公立大学より，2025年度における学術・課外活動の成果を評価され，「学長褒章」を受章いたしました．</p>
-        <p data-i18n="section_p2">HCI（Human-Computer Interaction）に基づくVR捕球シミュレータ「CatcherX」の研究開発や，エンタテインメントコンピューティング2025（EC2025）での一般セッション優秀賞受賞など，学外での積極的な研究発表を通じて大学の発展と名誉に貢献したことが評価の対象となりました．</p>
+        <p data-i18n="section_p2">HCI（Human-Computer Interaction）に基づく VR捕球シミュレータ「CatcherX」の研究開発や，エンタテインメントコンピューティング2025（EC2025）での一般セッション優秀賞受賞など，学外での積極的な研究発表を通じて大学の発展と名誉に貢献したことが評価の対象となりました．</p>
         <p data-i18n="section_p3">この受章を励みとして，今後も「技術がいかに人の心を動かすか」を真摯に追求し，より高いレベルの研究成果を社会に発信できるよう取り組んでまいります．</p>
         
+        <div class="quote-block">
+          <strong data-i18n="comment_name_ja">●山口 瑞悠さんの受賞コメント</strong><br>
+          <p data-i18n="comment_text">この度は，名誉ある学長褒章をいただき，大変光栄に存じます．<br><br>
+          既存のコンテンツに対する「もっとこうあればいいのに」という飽くなき探求心から始まったこのプロジェクトが，多くの方々の支えにより大きく成長し，このような高い評価をいただけたことを，心より嬉しく，そして誇りに思います．<br><br>
+          これからも，私と本システムの挑戦は終わりなく続きます．今後とも温かく見守っていただけますと幸いです．</p>
+        </div>
+
+        <h2 data-i18n="photos_section_title">授与式の様子</h2>
         <div class="image-container">
-          <p style="color:#666;" data-i18n="image_caption"></p>
+          <img src="fig/20260512_162738.JPG" alt="学長褒章 授与式にて" loading="lazy" decoding="async">
+          <p data-i18n="photo_1_caption">学長褒章 授与式</p>
+        </div>
+        <div class="image-container">
+          <img src="fig/20260515_010626.JPG" alt="賞状を手に（式典後の記念撮影）" loading="lazy" decoding="async">
+          <p data-i18n="photo_2_caption">賞状を手に（式典後の記念撮影）</p>
         </div>
       </section>
     </main>
@@ -225,6 +276,9 @@
       en: {
         page_title: "2025 President's Award - Miyu Yamaguchi",
         back_btn: "⬅ Back to Home",
+        // タグと日付の英訳を追加
+        news_tag_award: "Award",
+        news_date_award: "May 12, 2026",
         header_title: "2025 President's Award",
         header_subtitle: "President's Award, University of Fukuchiyama",
         detail_label_1: "Date of Award:",
@@ -237,12 +291,19 @@
         section_p1: "I received the 'President's Award' from the University of Fukuchiyama in recognition of my academic and extracurricular achievements during the 2025 academic year.",
         section_p2: "The award was granted for contributing to the development and honor of the university through active research presentations off-campus, including the development of the VR catching simulator 'CatcherX' based on HCI (Human-Computer Interaction) and winning the General Session Excellence Award at Entertainment Computing 2025 (EC2025).",
         section_p3: "Encouraged by this award, I will continue to sincerely pursue 'how technology can move people's hearts' and strive to disseminate higher-level research results to society.",
-        image_caption: "(Photos from the ceremony will be posted here)",
+        comment_name_ja: "●CatcherX Developer Miyu Yamaguchi's Comment",
+        comment_text: "I am deeply honored to receive the prestigious President's Award.<br><br>This project, which began with an insatiable exploratory spirit towards improving existing content, has grown significantly with the support of many people. I am sincerely delighted and proud that it has received such high acclaim.<br><br>The challenges for both myself and this system will continue endlessly. I would appreciate your continued kind watching over us.",
+        photos_section_title: "Award Ceremony",
+        photo_1_caption: "President's Award Ceremony",
+        photo_2_caption: "With the award certificate (commemorative photo after the ceremony)",
         footer_text: "© 2025 Miyu Yamaguchi All Rights Reserved."
       },
       ja: {
         page_title: "2025年度 学長褒章 受章 - 山口 瑞悠",
         back_btn: "⬅ トップページへ戻る",
+        // タグと日付を追加
+        news_tag_award: "Award",
+        news_date_award: "2026.05.12",
         header_title: "2025年度 学長褒章",
         header_subtitle: "President's Award, University of Fukuchiyama",
         detail_label_1: "授与年月：",
@@ -251,11 +312,15 @@
         detail_val_2: "福知山公立大学",
         detail_label_3: "対象活動：",
         detail_val_3: "エンタテインメントコンピューティング分野における研究活動，および学外での優秀な成果（CatcherXの開発・EC2025優秀賞受賞など）",
-        section_title: "受章の概要",
+        section_title: "受賞の概要",
         section_p1: "福知山公立大学より，2025年度における学術・課外活動の成果を評価され，「学長褒章」を受章いたしました．",
-        section_p2: "HCI（Human-Computer Interaction）に基づくVR捕球シミュレータ「CatcherX」の研究開発や，エンタテインメントコンピューティング2025（EC2025）での一般セッション優秀賞受賞など，学外での積極的な研究発表を通じて大学の発展と名誉に貢献したことが評価の対象となりました．",
+        section_p2: "HCI（Human-Computer Interaction）に基づく VR捕球シミュレータ「CatcherX」の研究開発や，エンタテインメントコンピューティング2025（EC2025）での一般セッション優秀賞受賞など，学外での積極的な研究発表を通じて大学の発展と名誉に貢献したことが評価の対象となりました．",
         section_p3: "この受章を励みとして，今後も「技術がいかに人の心を動かすか」を真摯に追求し，より高いレベルの研究成果を社会に発信できるよう取り組んでまいります．",
-        image_caption: "（ここに授与式の写真などを掲載予定）",
+        comment_name_ja: "●山口 瑞悠さんの受賞コメント",
+        comment_text: "この度は，学長褒章をいただき，大変光栄に存じます．<br><br>既存のコンテンツに対する「もっとこうあればいいのに」という飽くなき探求心から始まったこのプロジェクトが，多くの方々の支えにより大きく成長し，このような高い評価をいただけたことを，心より嬉しく，そして誇りに思います．<br><br>これからも，私と本システムの挑戦は終わりなく続きます．今後とも温かく見守っていただけますと幸いです．",
+        photos_section_title: "授与式の様子",
+        photo_1_caption: "学長褒章 授与式",
+        photo_2_caption: "賞状を手に（式典後の記念撮影）",
         footer_text: "© 2025 山口 瑞悠 All Rights Reserved."
       }
     };

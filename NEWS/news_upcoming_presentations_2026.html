@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="page_title">今後の発表予定 - 山口 瑞悠</title>
+  <link rel="icon" href="../fig/main.png">
+  <link rel="apple-touch-icon" href="../fig/main.png">
+  <link rel="stylesheet" href="news-detail.css">
+</head>
+<body>
+  <div class="floating-shapes" aria-hidden="true">
+    <svg class="shape" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#fff" /></svg>
+    <svg class="shape" width="120" height="120" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="#fff" /></svg>
+    <svg class="shape" width="90" height="90" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="#fff" /></svg>
+  </div>
+
+  <div class="container">
+    <div class="lang-switcher">
+      <button id="lang-ja" class="lang-btn active" type="button">JP</button>
+      <span>/</span>
+      <button id="lang-en" class="lang-btn" type="button">EN</button>
+    </div>
+
+    <a href="../index.html#news-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
+
+    <header>
+      <span class="news-tag">Schedule</span>
+      <span class="news-date" data-i18n="news_date">2026.07.16</span>
+      <div style="font-size:40px; margin:15px 0;">🗓️</div>
+      <h1 data-i18n="header_title">今後の発表予定</h1>
+      <p class="subtitle" data-i18n="header_subtitle">Upcoming Presentations</p>
+    </header>
+
+    <main>
+      <section class="section">
+        <h2 data-i18n="section_title">2026年の予定</h2>
+        <ul class="schedule-list">
+          <li><span class="schedule-date" data-i18n="date_1">2026年7月19日</span><span data-i18n="event_1">オープンキャンパス</span></li>
+          <li><span class="schedule-date" data-i18n="date_2">2026年8月5日</span><span data-i18n="event_2">関西大学 松下研究室 合同研究交流会</span></li>
+          <li><span class="schedule-date" data-i18n="date_3">2026年8月27日</span><span data-i18n="event_3">橋田研究室 中間発表</span></li>
+          <li><span class="schedule-date" data-i18n="date_4">2026年9月1日〜3日</span><span data-i18n="event_4">エンタテインメントコンピューティング2026（EC2026）</span></li>
+          <li><span class="schedule-date" data-i18n="date_5">2026年9月6日</span><span data-i18n="event_5">京都学び育みマルシェ</span></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer><p data-i18n="footer_text">© 2026 山口 瑞悠 All Rights Reserved.</p></footer>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        page_title: "Upcoming Presentations - Miyu Yamaguchi",
+        back_btn: "⬅ Back to Home",
+        news_date: "July 16, 2026",
+        header_title: "Upcoming Presentations",
+        header_subtitle: "Presentation Schedule",
+        section_title: "Schedule for 2026",
+        date_1: "July 19, 2026", event_1: "Open Campus",
+        date_2: "August 5, 2026", event_2: "Joint Research Meeting with the Matsushita Laboratory, Kansai University",
+        date_3: "August 27, 2026", event_3: "Hashida Laboratory Interim Presentation",
+        date_4: "September 1–3, 2026", event_4: "Entertainment Computing 2026 (EC2026)",
+        date_5: "September 6, 2026", event_5: "Kyoto Learning and Nurturing Marche",
+        footer_text: "© 2026 Miyu Yamaguchi All Rights Reserved."
+      },
+      ja: {
+        page_title: "今後の発表予定 - 山口 瑞悠",
+        back_btn: "⬅ トップページへ戻る",
+        news_date: "2026.07.16",
+        header_title: "今後の発表予定",
+        header_subtitle: "Upcoming Presentations",
+        section_title: "2026年の予定",
+        date_1: "2026年7月19日", event_1: "オープンキャンパス",
+        date_2: "2026年8月5日", event_2: "関西大学 松下研究室 合同研究交流会",
+        date_3: "2026年8月27日", event_3: "橋田研究室 中間発表",
+        date_4: "2026年9月1日〜3日", event_4: "エンタテインメントコンピューティング2026（EC2026）",
+        date_5: "2026年9月6日", event_5: "京都学び育みマルシェ",
+        footer_text: "© 2026 山口 瑞悠 All Rights Reserved."
+      }
+    };
+  </script>
+  <script src="news-detail.js"></script>
+</body>
+</html>

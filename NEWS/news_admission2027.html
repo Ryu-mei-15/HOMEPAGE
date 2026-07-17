@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="page_title">2027年度 入学案内パンフレット掲載 - 山口 瑞悠</title>
-  <link rel="icon" href="fig/main.png">
-  <link rel="apple-touch-icon" href="fig/main.png">
+  <link rel="icon" href="../fig/main.png">
+  <link rel="apple-touch-icon" href="../fig/main.png">
   <style>
     /* 共通基本設定（背景固定化） */
     body {
@@ -166,20 +166,19 @@
       border: 1px solid #e5e7eb;
     }
 
-    /* コメントブロック用スタイル（追加） */
-    .author-comment {
-      background-color: rgba(248, 249, 250, 0.8);
-      border-left: 5px solid #0056b3;
-      padding: 15px 20px;
-      margin-top: 30px;
-      text-align: left;
-      border-radius: 0 10px 10px 0;
-    }
-    .author-comment p {
-      margin: 0;
-      color: #555;
+    /* コメント用ハイライトブロック */
+    .quote-block {
+      margin: 20px 0;
+      padding: 25px;
+      border-left: 4px solid #1e3a8a;
+      border-radius: 10px;
+      color: #334155;
+      background: #f8fafc;
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.9;
+    }
+    .quote-block p {
+      margin-bottom: 0;
     }
 
     footer {
@@ -192,6 +191,7 @@
     @media (max-width: 768px) {
       h1 { font-size: 20px; }
       .section { padding: 20px; }
+      .quote-block { padding: 15px; font-size: 14px; }
     }
   </style>
  </head>
@@ -209,7 +209,7 @@
       <button id="lang-en" class="lang-btn">EN</button>
     </div>
 
-    <a href="index.html#news-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
+    <a href="../index.html#news-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
     
     <header>
       <span class="news-tag" data-i18n="news_tag">Media</span>
@@ -225,14 +225,15 @@
 
         <!-- 画像エリアを更新 -->
         <div class="image-container">
-          <img src="fig/panf.png" alt="2027年度 入学案内パンフレット">
+          <img src="../fig/panf.png" alt="2027年度 入学案内パンフレット">
         </div>
 
         <p data-i18n="section_p3">大学の顔となる入学案内において，このように取り上げていただいたことを大変光栄に思います．この記事を通じて，本学の魅力やエンタテインメントコンピューティング研究の面白さが高校生や受験生の皆さんに伝わることを願っています．</p>
 
         <!-- コメントエリアを追加 -->
-        <div class="author-comment">
-          <p data-i18n="author_comment">※ ここに，撮影時の裏話や記事に込めた思いなど，後日執筆予定のコメントが入ります（現在，鋭意思索中）．</p>
+        <div class="quote-block">
+          <strong data-i18n="comment_name">●山口 瑞悠さんのコメント</strong><br>
+          <p data-i18n="author_comment">取材では，これまでの研究活動を振り返りながら，CatcherXの開発に込めた思いや，試行錯誤を重ねて形にしていく研究の面白さを自分の言葉でお話ししました．撮影を通して，普段何気なく過ごしている研究環境や，周囲の方々の支えがあってこそ活動を続けられているのだと改めて実感しました．この記事が，進路を考える高校生の皆さんにとって，「自分も新しいことに挑戦してみたい」と思えるきっかけになれば嬉しいです．</p>
         </div>
       </section>
     </main>
@@ -254,7 +255,8 @@
         section_p1: "My activities have been featured as the main article in the special section <span class='feature-title'>'Active Students Gathering from Across the Nation'</span> in the '2027 Admission Guide' published by the University of Fukuchiyama.",
         section_p2: "This article is the largest feature in the brochure, providing an in-depth look at the development of the VR content 'CatcherX', recent conference awards, and how my studies at the university have fueled my research.",
         section_p3: "I am deeply honored to be featured in the university's flagship recruitment brochure. I hope this article effectively communicates the appeal of our university and the excitement of Entertainment Computing research to high school students and prospective applicants.",
-        author_comment: "* A comment about behind-the-scenes stories and my passion for the article will be added here later (currently brainstorming).",
+        comment_name: "●Comment from Miyu Yamaguchi",
+        author_comment: "During the interview, I reflected on my research journey and spoke in my own words about the ideas behind CatcherX and the excitement of shaping a project through repeated trial and error. The photo shoot also reminded me that I can continue pursuing these activities thanks to the research environment around me and the support of many people. I hope this article inspires high school students considering their future paths to take on a new challenge of their own.",
         footer_text: "© 2026 Miyu Yamaguchi All Rights Reserved."
       },
       ja: {
@@ -267,7 +269,8 @@
         section_p1: "福知山公立大学が発行する「2027年度 入学案内パンフレット」の特集ページ<span class='feature-title'>「全国から集まる学生たちの活躍」</span>において，私の活動がメイン記事として大きく掲載されました．",
         section_p2: "本記事はパンフレット内でも最大規模の扱いとなっており，VRコンテンツ「CatcherX」の開発や，学会での受賞，および本学での学びがいかに研究に結びついているかについて詳しく紹介していただいています．",
         section_p3: "大学の顔となる入学案内において，このように取り上げていただいたことを大変光栄に思います．この記事を通じて，本学の魅力やエンタテインメントコンピューティング研究の面白さが高校生や受験生の皆さんに伝わることを願っています．",
-        author_comment: "※ ここに，撮影時の裏話や記事に込めた思いなど，後日執筆予定のコメントが入ります（現在，鋭意思索中）．",
+        comment_name: "●山口 瑞悠さんのコメント",
+        author_comment: "取材では，これまでの研究活動を振り返りながら，CatcherXの開発に込めた思いや，試行錯誤を重ねて形にしていく研究の面白さを自分の言葉でお話ししました．撮影を通して，普段何気なく過ごしている研究環境や，周囲の方々の支えがあってこそ活動を続けられているのだと改めて実感しました．この記事が，進路を考える高校生の皆さんにとって，「自分も新しいことに挑戦してみたい」と思えるきっかけになれば嬉しいです．",
         footer_text: "© 2026 山口 瑞悠 All Rights Reserved."
       }
     };

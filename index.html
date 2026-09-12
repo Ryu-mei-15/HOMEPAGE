@@ -7,7 +7,6 @@
   
   <link rel="icon" href="fig/main.png">
   <link rel="apple-touch-icon" href="fig/main.png">
-  <script src="/_sdk/element_sdk.js"></script>
   <style>
     /* 基本設定 */
     body {
@@ -490,25 +489,38 @@
     }
   </style>
   <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  <link rel="stylesheet" href="readability.css">
+  <link rel="stylesheet" href="portfolio-redesign.css">
  </head>
  <body>
-  <div class="floating-shapes">
-   <svg class="shape" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#ffffff" /></svg>
-   <svg class="shape" width="120" height="120" viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="#ffffff" /></svg>
-   <svg class="shape" width="90" height="90" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="#ffffff" /></svg>
-  </div>
-
   <div class="container">
    <div class="lang-switcher">
      <button id="lang-ja" class="lang-btn active">JP</button>
      <span>/</span>
      <button id="lang-en" class="lang-btn">EN</button>
    </div>
-   <header>
-    <h1 id="main-title" data-i18n="main_title">山口 瑞悠</h1>
-    <p class="subtitle" id="subtitle" data-i18n="subtitle">エンタテインメント・HCI・音楽情報処理</p>
+   <header class="hero">
+    <div class="hero-copy">
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">RESEARCH PORTFOLIO · 2026</p>
+      <h1 id="main-title" data-i18n="main_title">山口 瑞悠</h1>
+      <p class="subtitle" id="subtitle" data-i18n="subtitle">エンタテインメント・HCI・音楽情報処理・スポーツインタラクション</p>
+      <p class="hero-lead" data-i18n="hero_lead">身体とデジタルの境界をひらき，心が動くインタラクションをつくる．</p>
+      <div class="hero-actions">
+        <a href="RESEARCH/catcherx_ec2026.html" class="hero-primary" data-i18n="hero_project">最新の研究を見る</a>
+        <a href="#sns-section" class="hero-secondary" data-i18n="hero_contact">連絡先を見る</a>
+      </div>
+      <dl class="hero-facts">
+        <div><dt>2026</dt><dd data-i18n="hero_fact_awards">EC2026 二部門認定</dd></div>
+        <div><dt>SPORTS × HCI</dt><dd data-i18n="hero_fact_focus">スポーツインタラクション</dd></div>
+      </dl>
+    </div>
+    <figure class="hero-visual">
+      <img src="fig/1000019020.jpg" alt="EC2026でCatcherXを体験する参加者" decoding="async">
+      <figcaption>
+        <span data-i18n="hero_featured">FEATURED PROJECT</span>
+        <strong>CatcherX</strong>
+      </figcaption>
+    </figure>
     <nav class="navigation">
         <a href="#about-section" class="nav-link" data-i18n="nav_profile">プロフィール</a>
         <a href="#news-section" class="nav-link" data-i18n="nav_news">お知らせ</a>
@@ -522,8 +534,8 @@
     </nav>
    </header>
    <main>
-    <section class="section" id="about-section">
-      <h2><span class="section-icon">👤</span><span id="about-title" data-i18n="about_title">プロフィール</span></h2>
+    <section class="section section-wide" id="about-section">
+      <h2><span class="section-icon">01</span><span id="about-title" data-i18n="about_title">プロフィール</span></h2>
       <div class="about-content">
         <img src="fig/20250910_215900.JPG" alt="山口 瑞悠のプロフィール写真" class="profile-image" decoding="async">
         <div>
@@ -536,21 +548,16 @@
       </div>
     </section>
 
-    <section class="section" id="news-section">
-      <h2><span class="section-icon">📢</span><span id="news-title" data-i18n="news_title">お知らせ</span></h2>
+    <section class="section section-five" id="news-section">
+      <h2><span class="section-icon">02</span><span id="news-title" data-i18n="news_title">お知らせ</span></h2>
       <ul class="news-list">
         <li class="pinned-item">
-          <span class="news-date">2026.07.16</span>
-          <span class="news-tag" style="background:#fbbf24;">Pinned</span>
+          <span class="news-date">2026.09.03</span>
+          <span class="news-tag" style="background:#fbbf24;">Award</span>
           <div>
             <span class="pinned-icon">📌</span>
-            <a href="NEWS/news_ec2026_selected.html" class="news-link" data-i18n="news_pinned">EC2026 特選セッション（査読付き）に採択されました．</a>
+            <a href="NEWS/award_ec2026.html" class="news-link" data-i18n="news_pinned">EC2026で特選セッション発表認定・レコメンデモ認定を受けました．</a>
           </div>
-        </li>
-        <li>
-          <span class="news-date">2026.07.16</span>
-          <span class="news-tag" style="background:#8b5cf6;">Schedule</span>
-          <a href="NEWS/news_upcoming_presentations_2026.html" class="news-link" data-i18n="news_recent_1">今後の発表予定を公開しました．</a>
         </li>
         <li>
           <span class="news-date">2026.05.15</span>
@@ -558,13 +565,13 @@
           <a href="NEWS/news_admission2027.html" class="news-link" data-i18n="news_recent_2">福知山公立大学 2027年度入学案内パンフレットにメイン記事が掲載されます．</a>
         </li>
       </ul>
-      <div style="text-align: right; margin-top: 20px;">
-        <a href="news.html" class="tag-badge" style="border-color: #1e3a8a; color: #1e3a8a; font-weight: bold; padding: 5px 15px;">過去のお知らせ一覧へ ➡</a>
+      <div class="archive-link-row">
+        <a href="news.html" class="archive-link" data-i18n="news_archive">すべてのお知らせを見る</a>
       </div>
     </section>
 
-    <section class="section" id="career-section">
-      <h2><span class="section-icon">📚</span><span id="career-title" data-i18n="career_title">経歴</span></h2>
+    <section class="section section-seven" id="career-section">
+      <h2><span class="section-icon">03</span><span id="career-title" data-i18n="career_title">経歴</span></h2>
       <ul>
        <li data-i18n="career_item_1">2024年3月　三重県立津高等学校　卒業</li>
        <li data-i18n="career_item_2">2024年4月　福知山公立大学情報学部 情報学科　入学　同時に橋田光代研究室配属</li>
@@ -572,8 +579,8 @@
       </ul>
     </section>
 
-    <section class="section" id="publications-section">
-      <h2><span class="section-icon">📝</span><span id="publications-title" data-i18n="publications_title">発表論文</span></h2>
+    <section class="section section-wide" id="publications-section">
+      <h2><span class="section-icon">04</span><span id="publications-title" data-i18n="publications_title">発表論文</span></h2>
       <ul>
        <li data-i18n="publication_item_1"></li>
        <li data-i18n="publication_item_2"></li>
@@ -581,8 +588,8 @@
       </ul>
     </section>
 
-    <section class="section" id="awards-section">
-      <h2><span class="section-icon">🏆</span><span id="awards-title" data-i18n="awards_title">受賞歴</span></h2>
+    <section class="section section-wide" id="awards-section">
+      <h2><span class="section-icon">05</span><span id="awards-title" data-i18n="awards_title">受賞歴</span></h2>
       
       <div class="filter-nav">
         <button class="filter-btn active" onclick="filterAwards('all', event)" data-i18n="filter_all">すべて</button>
@@ -593,9 +600,16 @@
       <ul>
        <li class="award-item" data-category="academic">
          <span class="tag-badge" style="border-color: #f59e0b; color: #f59e0b;" data-i18n="badge_academic">学術賞</span>
-         <div class="mt-2" data-i18n="award_item_1_title"></div>
-         <span class="award-badge" data-i18n="award_item_1_badge">🌟 優秀賞受賞</span>
-         <div class='mt-3' data-i18n="award_item_1_link"></div>
+         <div class="mt-2" data-i18n="award_item_3_title"></div>
+         <span class="award-badge" data-i18n="award_item_3_badge">🏆 発表認定</span>
+         <div class='mt-3' data-i18n="award_item_3_link"></div>
+       </li>
+
+       <li class="award-item" data-category="academic">
+         <span class="tag-badge" style="border-color: #f59e0b; color: #f59e0b;" data-i18n="badge_academic">学術賞</span>
+         <div class="mt-2" data-i18n="award_item_4_title"></div>
+         <span class="award-badge" data-i18n="award_item_4_badge">🏆 推薦認定</span>
+         <div class='mt-3' data-i18n="award_item_4_link"></div>
        </li>
 
        <li class="award-item" data-category="other">
@@ -603,12 +617,20 @@
          <div class="mt-2" data-i18n="award_item_2_title"></div>
          <div class='mt-3' data-i18n="award_item_2_link"></div>
        </li>
+
+       <li class="award-item" data-category="academic">
+         <span class="tag-badge" style="border-color: #f59e0b; color: #f59e0b;" data-i18n="badge_academic">学術賞</span>
+         <div class="mt-2" data-i18n="award_item_1_title"></div>
+         <span class="award-badge" data-i18n="award_item_1_badge">🌟 優秀賞受賞</span>
+         <div class='mt-3' data-i18n="award_item_1_link"></div>
+       </li>
       </ul>
     </section>
 
-    <section class="section" id="conferences-section">
-      <h2><span class="section-icon">🎓</span><span id="conferences-title" data-i18n="conferences_title">過去の参加学会</span></h2>
+    <section class="section section-six" id="conferences-section">
+      <h2><span class="section-icon">06</span><span id="conferences-title" data-i18n="conferences_title">過去の参加学会</span></h2>
       <ul>
+       <li data-i18n="conference_item_4"></li>
        <li data-i18n="conference_item_1"></li>
        <li data-i18n="conference_item_2"></li>
        <li data-i18n="conference_item_3"></li>
@@ -618,9 +640,10 @@
        </div>
     </section>
 
-    <section class="section" id="presentations-section">
-      <h2><span class="section-icon">💬</span><span id="presentations-title" data-i18n="presentations_title">過去の対外発表</span></h2>
+    <section class="section section-six" id="presentations-section">
+      <h2><span class="section-icon">07</span><span id="presentations-title" data-i18n="presentations_title">過去の対外発表</span></h2>
       <ul>
+       <li data-i18n="presentation_item_5"></li>
        <li data-i18n="presentation_item_1"></li>
        <li data-i18n="presentation_item_2"></li>
        <li data-i18n="presentation_item_3"></li>
@@ -631,8 +654,8 @@
        </div>
     </section>
 
-    <section class="section" id="sns-section">
-      <h2><span class="section-icon">🔗</span><span id="sns-title" data-i18n="sns_title">SNS</span></h2>
+    <section class="section section-four" id="sns-section">
+      <h2><span class="section-icon">08</span><span id="sns-title" data-i18n="sns_title">SNS</span></h2>
       <div class="sns-links">
         <a href="https://x.com/Ryu_mei1537" target="_blank" rel="noopener noreferrer" class="sns-button"> <span class="sns-icon">𝕏</span> <span class="sns-name">X (Twitter)</span> </a> 
         <a href="https://www.instagram.com/miyu.0830_y" target="_blank" rel="noopener noreferrer" class="sns-button"> <span class="sns-icon">📷</span> <span class="sns-name">Instagram</span> </a> 
@@ -641,8 +664,8 @@
       </div>
     </section>
 
-    <section class="section" id="gallery-section">
-        <h2><span class="section-icon">📸</span><span data-i18n="gallery_title">ギャラリー</span></h2>
+    <section class="section section-eight" id="gallery-section">
+        <h2><span class="section-icon">09</span><span data-i18n="gallery_title">ギャラリー</span></h2>
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <img src="fig/1694243037224.jpg" alt="ギャラリー画像1" loading="lazy" decoding="async">
@@ -668,11 +691,34 @@
             <div class="mySlides fade">
                 <img src="fig/IMG_8754.png" alt="ギャラリー画像8" loading="lazy" decoding="async">
             </div>
+            <div class="mySlides fade">
+                <img src="fig/1000019018.jpg" alt="EC2026のCatcherXポスター展示" loading="lazy" decoding="async">
+            </div>
+            <div class="mySlides fade">
+                <img src="fig/1000019020.jpg" alt="EC2026でのCatcherXデモ体験の様子" loading="lazy" decoding="async">
+            </div>
+            <div class="mySlides fade">
+                <img src="fig/1000019021.jpg" alt="EC2026でCatcherXを体験する参加者" loading="lazy" decoding="async">
+            </div>
+            <div class="mySlides fade">
+                <img src="fig/1000019022.jpg" alt="EC2026デモ・ポスター会場の様子" loading="lazy" decoding="async">
+            </div>
+            <div class="mySlides fade">
+                <img src="fig/IMG_2449.jpeg" alt="EC2026特選セッション発表認定の記念写真" loading="lazy" decoding="async">
+            </div>
+            <div class="mySlides fade">
+                <img src="fig/IMG_6714.jpg" alt="EC2026受賞者との記念写真" loading="lazy" decoding="async">
+            </div>
+        </div>
+        <div class="gallery-controls">
+          <button type="button" id="gallery-prev" class="gallery-button" aria-label="前の写真">←</button>
+          <span id="gallery-counter" class="gallery-counter" aria-live="polite">01 / 14</span>
+          <button type="button" id="gallery-next" class="gallery-button" aria-label="次の写真">→</button>
         </div>
     </section>
    </main>
    <footer>
-    <p data-i18n="footer_text">© 2025 山口 瑞悠 All Rights Reserved.</p>
+    <p data-i18n="footer_text">© 2026 山口 瑞悠 All Rights Reserved.</p>
    </footer>
   </div>
   
@@ -697,18 +743,37 @@
 
     // Slideshow script
     let slideIndex = 0;
-    showSlides();
-    function showSlides() {
-      let i;
-      let slides = document.getElementsByClassName("mySlides");
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+    let slideTimer;
+
+    function renderSlide(index) {
+      const slides = Array.from(document.getElementsByClassName("mySlides"));
+      if (!slides.length) return;
+      slideIndex = (index + slides.length) % slides.length;
+      slides.forEach((slide, position) => {
+        slide.style.display = position === slideIndex ? "block" : "none";
+      });
+      const counter = document.getElementById("gallery-counter");
+      if (counter) {
+        counter.textContent = `${String(slideIndex + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
       }
-      slideIndex++;
-      if (slideIndex > slides.length) {slideIndex = 1}
-      slides[slideIndex-1].style.display = "block";
-      setTimeout(showSlides, 4000);
     }
+
+    function restartSlideshow() {
+      window.clearInterval(slideTimer);
+      slideTimer = window.setInterval(() => renderSlide(slideIndex + 1), 5000);
+    }
+
+    renderSlide(0);
+    restartSlideshow();
+
+    document.getElementById("gallery-prev")?.addEventListener("click", () => {
+      renderSlide(slideIndex - 1);
+      restartSlideshow();
+    });
+    document.getElementById("gallery-next")?.addEventListener("click", () => {
+      renderSlide(slideIndex + 1);
+      restartSlideshow();
+    });
   </script>
 
   <script>
@@ -717,7 +782,14 @@
       en: {
         page_title: "Miyu Yamaguchi's Homepage",
         main_title: "Miyu Yamaguchi",
-        subtitle: "Entertainment, HCI, Music Information Processing",
+        subtitle: "Entertainment Computing, HCI, Music Information Processing, Sports Interaction",
+        hero_eyebrow: "RESEARCH PORTFOLIO · 2026",
+        hero_lead: "Opening the boundary between the physical and digital to create interactions that move people.",
+        hero_project: "Explore Latest Research",
+        hero_contact: "Contact & Links",
+        hero_fact_awards: "Two EC2026 recognitions",
+        hero_fact_focus: "Sports interaction research",
+        hero_featured: "FEATURED PROJECT",
         nav_profile: "Profile",
         nav_news: "News",
         nav_career: "Career",
@@ -729,6 +801,7 @@
         nav_gallery: "Gallery",
         about_title: "Profile",
         news_title: "News",
+        news_archive: "View All News",
         
         about_name: "<h3 class='profile-name'>Miyu Yamaguchi<span class='profile-name-en'>山口 瑞悠</span></h3>",
         
@@ -737,8 +810,7 @@
         about_bio_3: "Starting with the sensibilities I cultivated during my time at high school, I am currently exploring the potential of entertainment computing, focusing on 'how technology can move people's hearts.' My journey, which began with an interest in music information processing, has expanded into creating physical and immersive experiences using VR technology.",
         about_bio_4: "At the University of Fukuchiyama's Mitsuyo Hashida Laboratory and Kwansei Gakuin University's Haruhiro Katayose Laboratory, I am engaged in the research and development of interactive systems based on HCI (Human-Computer Interaction). I am particularly passionate about designing next-generation entertainment experiences that blur the lines between digital and physical, such as the development of the VR baseball simulator 'CatcherX'.",
 
-        news_pinned: "Accepted for the peer-reviewed Selected Session at EC2026.",
-        news_recent_1: "Published the schedule of upcoming presentations.",
+        news_pinned: "Received Selected Session Presentation and Recommended Demo recognitions at EC2026.",
         news_recent_2: "Featured in the 2027 Admission Guide for the University of Fukuchiyama.",
 
         career_title: "Career",
@@ -747,7 +819,7 @@
         career_item_3: "September 2024: External Researcher at the Haruhiro Katayose Laboratory, School of Science and Technology, Kwansei Gakuin University.",
         publications_title: "Publications",
         
-        publication_item_1: "September 2026: CatcherX: A VR Simulator Focusing on the Cycle of the Catcher's Perceptual–Motor Process (EC2026 @ Kyoto Sangyo University)<div class='mt-1'><a href='RESEARCH/catcherx_ec2026.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold;'>View Project Details ➡</a></div>",
+        publication_item_1: "September 2026: CatcherX: A VR Simulator Focusing on the Cycle of the Catcher's Perceptual–Motor Process (EC2026 @ Kyoto Sangyo University)<div class='mt-1'><a href='https://ec2026.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>EC2026</a><a href='RESEARCH/catcherx_ec2026.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold;'>View Project Details ➡</a></div>",
         publication_item_2: "August 2025: CatcherX: A VR Catching Simulator that Reproduces All Pitch Types (EC2025 @ Nihon University)<div class='mt-1'><a href='https://ipsj.ixsq.nii.ac.jp/records/2003671' target='_blank' rel='noopener noreferrer' class='tag-badge'>Paper</a><a href='RESEARCH/catcherx.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold;'>View Project Details ➡</a></div>",
         publication_item_3: "September 2024: An Active Sound Appreciation Game Using a Piano-type Pinball Machine (EC2024 @ Hokkaido Information University)<div class='mt-1'><a href='https://ipsj.ixsq.nii.ac.jp/records/238787' target='_blank' rel='noopener noreferrer' class='tag-badge'>Paper</a><a href='RESEARCH/pinball.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold;'>View Project Details ➡</a></div>",
         
@@ -763,25 +835,40 @@
         award_item_1_link: "<a href='NEWS/award_ec2025.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold; padding: 5px 10px;'>🏆 View Award Details ➡</a>",
         award_item_2_title: "<strong>May 2026: 2025 President's Award</strong><br>University of Fukuchiyama",
         award_item_2_link: "<a href='NEWS/award_president_2025.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold; padding: 5px 10px;'>🏅 View Award Details ➡</a>",
+        award_item_3_title: "<strong>September 2026: Selected Session Presentation Recognition</strong><br>Program Committee Recommendation for Oral Presentation<br>CatcherX: A VR Simulator Focusing on the Cycle of the Catcher's Perceptual–Motor Process (EC2026 @ Kyoto Sangyo University)<div class='mt-1'><a href='https://ec2026.entcomp.org/award/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Official Page</a></div>",
+        award_item_3_badge: "🏆 Presentation Recognition",
+        award_item_3_link: "<a href='NEWS/award_ec2026.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold; padding: 5px 10px;'>🏆 View Award Details ➡</a>",
+        award_item_4_title: "<strong>September 2026: Recommended Demo Recognition</strong><br>Expert Committee Recommendation for Demo/Poster Presentation<br>CatcherX: A VR Simulator Focusing on the Cycle of the Catcher's Perceptual–Motor Process (EC2026 @ Kyoto Sangyo University)<div class='mt-1'><a href='https://ec2026.entcomp.org/award/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Official Page</a></div>",
+        award_item_4_badge: "🏆 Recommendation Recognition",
+        award_item_4_link: "<a href='NEWS/award_ec2026.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold; padding: 5px 10px;'>🏆 View Award Details ➡</a>",
         
         conferences_title: "Past Conferences",
+        conference_item_4: "September 2026: EC2026 @ Kyoto Sangyo University<br>CatcherX: A VR Simulator Focusing on the Cycle of the Catcher's Perceptual–Motor Process<div class='mt-1'><a href='https://ec2026.entcomp.org/program/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://ec2026.entcomp.org/program/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://ec2026.entcomp.org/program/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         conference_item_1: "August 2025: EC2025 @ Nihon University, Centennial Hall<br>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types<div class='mt-1'><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         conference_item_2: "September 2024: EC2024 @ Hokkaido Information University<br>An Active Sound Appreciation Game Using a Piano-type Pinball Machine<div class='mt-1'><a href='https://ec2024.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://ec2024.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         conference_item_3: "August 2024: SIGMUS141 @ Komazawa University<br>Prototype of an Active Sound Appreciation Game Using a Piano-type Pinball Machine<div class='mt-1'><a href='https://www.ipsj.or.jp/kenkyukai/event/mus141.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://www.ipsj.or.jp/kenkyukai/event/mus141.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         
         presentations_title: "Past Presentations",
+        presentation_item_5: "August 2026: Research Exchange Meeting with the Matsushita Laboratory, Kansai University<br>CatcherX: A VR Simulator Focusing on the Cycle of the Catcher's Perceptual–Motor Process<div class='mt-1'><span class='tag-badge'>Poster</span></div>",
         presentation_item_1: "December 2025: 2025 Winter Interim Presentation, Haruhiro Katayose Lab<br>Catcher τείχος β: Development of a VR Catching Simulator to Prevent Passed Balls<div class='mt-1'><a href='https://ist.ksc.kwansei.ac.jp/~katayose/public_seminar/2025winter.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a></div>",
         presentation_item_2: "August 2025: 2025 Summer Interim Presentation, Haruhiro Katayose Lab<br>CatcherX: A VR Catching Simulator that Reproduces All Pitch Types<div class='mt-1'><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         presentation_item_3: "December 2024: 2024 Winter Interim Presentation, Haruhiro Katayose Lab<br>Marvelica: A Marble Animation Capable of Musical Expression<div class='mt-1'><a href='https://ist.ksc.kwansei.ac.jp/~katayose/public_seminar/2024winter.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a></div>",
         presentation_item_4: "August 2024: 2024 Summer Interim Presentation, Haruhiro Katayose Lab<br>An Active Sound Appreciation Game Using a Piano-type Pinball Machine<div class='mt-1'><a href='https://scrapbox.io/KMHF-JRP/2024_%E5%A4%8F%E3%81%AE%E5%90%88%E5%90%8C%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E4%BC%9A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://scrapbox.io/KMHF-JRP/2024_%E5%A4%8F%E3%81%AE%E5%90%88%E5%90%8C%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E4%BC%9A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://scrapbox.io/KMHF-JRP/2024_%E5%A4%8F%E3%81%AE%E5%90%88%E5%90%8C%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E4%BC%9A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         sns_title: "SNS",
         gallery_title: "Gallery",
-        footer_text: "© 2025 Miyu Yamaguchi All Rights Reserved."
+        footer_text: "© 2026 Miyu Yamaguchi All Rights Reserved."
       },
       ja: {
         page_title: "山口 瑞悠のホームページ",
         main_title: "山口 瑞悠",
-        subtitle: "エンタテインメント・HCI・音楽情報処理",
+        subtitle: "エンタテインメント・HCI・音楽情報処理・スポーツインタラクション",
+        hero_eyebrow: "RESEARCH PORTFOLIO · 2026",
+        hero_lead: "身体とデジタルの境界をひらき，心が動くインタラクションをつくる．",
+        hero_project: "最新の研究を見る",
+        hero_contact: "連絡先を見る",
+        hero_fact_awards: "EC2026 二部門認定",
+        hero_fact_focus: "スポーツインタラクション",
+        hero_featured: "FEATURED PROJECT",
         nav_profile: "プロフィール",
         nav_news: "お知らせ",
         nav_career: "経歴",
@@ -793,6 +880,7 @@
         nav_gallery: "ギャラリー",
         about_title: "プロフィール",
         news_title: "お知らせ",
+        news_archive: "すべてのお知らせを見る",
         
         about_name: "<h3 class='profile-name'>山口 瑞悠<span class='profile-name-en'>Miyu Yamaguchi</span></h3>",
         
@@ -801,8 +889,7 @@
         about_bio_3: "高校時代に培った感性を原点に，現在は「技術がいかに人の心を動かすか」というエンタテインメントコンピューティングの可能性を探求中．音楽情報処理への興味から始まった私の旅は，VR技術を用いた身体的かつ没入感のある体験創出へとその領域を拡張しています．",
         about_bio_4: "福知山公立大学 橋田光代研究室および関西学院大学 片寄晴弘研究室にて，HCI（Human-Computer Interaction）に基づくインタラクティブシステムの研究開発に従事．特にVRを用いた野球捕球シミュレータ「CatcherX」の開発など，デジタルとフィジカルの境界を溶かすような，次世代のエンタテインメント体験のデザインに情熱を注いでいます．",
 
-        news_pinned: "EC2026 特選セッション（査読付き）に採択されました．",
-        news_recent_1: "今後の発表予定を公開しました．",
+        news_pinned: "EC2026で特選セッション発表認定・レコメンデモ認定を受けました．",
         news_recent_2: "福知山公立大学 2027年度入学案内パンフレットにメイン記事が掲載されます．",
         
         career_title: "経歴",
@@ -811,7 +898,7 @@
         career_item_3: "2024年9月　関西学院大学工学部 情報工学課程 片寄晴弘研究室外部研究員",
         publications_title: "発表論文",
         
-        publication_item_1: "2026年9月　CatcherX: 捕手の認知-運動過程の循環に着目したVRシミュレータ（EC2026＠京都産業大学）<div class='mt-1'><a href='RESEARCH/catcherx_ec2026.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold;'>詳細ページを見る ➡</a></div>",
+        publication_item_1: "2026年9月　CatcherX: 捕手の認知-運動過程の循環に着目したVRシミュレータ（EC2026＠京都産業大学）<div class='mt-1'><a href='https://ec2026.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>EC2026</a><a href='RESEARCH/catcherx_ec2026.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold;'>詳細ページを見る ➡</a></div>",
         publication_item_2: "2025年8月　CatcherX: すべての球種を再現するVR捕球シミュレータ（EC2025＠日本大学文理学部キャンパス）<div class='mt-1'><a href='https://ipsj.ixsq.nii.ac.jp/records/2003671' target='_blank' rel='noopener noreferrer' class='tag-badge'>Paper</a><a href='RESEARCH/catcherx.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold;'>詳細ページを見る ➡</a></div>",
         publication_item_3: "2024年9月　ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム（EC2024＠北海道情報大学）<div class='mt-1'><a href='https://ipsj.ixsq.nii.ac.jp/records/238787' target='_blank' rel='noopener noreferrer' class='tag-badge'>Paper</a><a href='RESEARCH/pinball.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold;'>詳細ページを見る ➡</a></div>",
         
@@ -827,20 +914,28 @@
         award_item_1_link: "<a href='NEWS/award_ec2025.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold; padding: 5px 10px;'>🏆 受賞の詳細を見る ➡</a>",
         award_item_2_title: "<strong>2026年5月　2025年度 学長褒章</strong><br>福知山公立大学",
         award_item_2_link: "<a href='NEWS/award_president_2025.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold; padding: 5px 10px;'>🏅 受賞の詳細を見る ➡</a>",
+        award_item_3_title: "<strong>2026年9月　特選セッション発表認定</strong><br>口頭発表に関するプログラム委員推薦賞<br>CatcherX: 捕手の認知-運動過程の循環に着目したVRシミュレータ（EC2026＠京都産業大学）<div class='mt-1'><a href='https://ec2026.entcomp.org/award/' target='_blank' rel='noopener noreferrer' class='tag-badge'>公式ページ</a></div>",
+        award_item_3_badge: "🏆 発表認定",
+        award_item_3_link: "<a href='NEWS/award_ec2026.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold; padding: 5px 10px;'>🏆 表彰の詳細を見る ➡</a>",
+        award_item_4_title: "<strong>2026年9月　レコメンデモ認定</strong><br>デモ・ポスター発表に関する専門委員推薦賞<br>CatcherX: 捕手の認知-運動過程の循環に着目したVRシミュレータ（EC2026＠京都産業大学）<div class='mt-1'><a href='https://ec2026.entcomp.org/award/' target='_blank' rel='noopener noreferrer' class='tag-badge'>公式ページ</a></div>",
+        award_item_4_badge: "🏆 推薦認定",
+        award_item_4_link: "<a href='NEWS/award_ec2026.html' class='tag-badge' style='border-color: #1e3a8a; color: #1e3a8a; font-weight: bold; padding: 5px 10px;'>🏆 表彰の詳細を見る ➡</a>",
         
         conferences_title: "過去の参加学会",
+        conference_item_4: "2026年9月　EC2026＠京都産業大学<br>CatcherX: 捕手の認知-運動過程の循環に着目したVRシミュレータ<div class='mt-1'><a href='https://ec2026.entcomp.org/program/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://ec2026.entcomp.org/program/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://ec2026.entcomp.org/program/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         conference_item_1: "2025年8月　EC2025＠日本大学文理学部百周年記念館<br>CatcherX: すべての球種を再現するVR捕球シミュレータ<div class='mt-1'><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://ec2025.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         conference_item_2: "2024年9月　EC2024＠北海道情報大学<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム<div class='mt-1'><a href='https://ec2024.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://ec2024.entcomp.org/' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         conference_item_3: "2024年8月　SIGMUS141＠駒澤大学<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲームの試作<div class='mt-1'><a href='https://www.ipsj.or.jp/kenkyukai/event/mus141.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://www.ipsj.or.jp/kenkyukai/event/mus141.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         
         presentations_title: "過去の対外発表",
+        presentation_item_5: "2026年8月　関西大学 松下研究室 研究交流会<br>CatcherX: 捕手の認知-運動過程の循環に着目したVRシミュレータ<div class='mt-1'><span class='tag-badge'>Poster</span></div>",
         presentation_item_1: "2025年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度冬季中間発表<br>Catcher τείχος β: ボールを後ろに逸らさないVR捕球シミュレータの開発<div class='mt-1'><a href='https://ist.ksc.kwansei.ac.jp/~katayose/public_seminar/2025winter.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a></div>",
         presentation_item_2: "2025年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2025年度夏季中間発表<br>CatcherX: すべての球種を再現するVR捕球シミュレータ<div class='mt-1'><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://scrapbox.io/KMHF-JRP/%E5%A4%8F%E3%81%AE%E4%B8%AD%E9%96%93%E7%99%BA%E8%A1%A8%E4%BC%9A_2025' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         presentation_item_3: "2024年12月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度冬季中間発表<br>Marvelica: 演奏表現可能なマーブルアニメーション<div class='mt-1'><a href='https://ist.ksc.kwansei.ac.jp/~katayose/public_seminar/2024winter.html' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a></div>",
         presentation_item_4: "2024年8月　関西学院大学工学部情報工学課程片寄晴弘研究室主催2024年度夏季中間発表<br>ピアノ型ピンボール版を用いた能動的サウンド鑑賞ゲーム<div class='mt-1'><a href='https://scrapbox.io/KMHF-JRP/2024_%E5%A4%8F%E3%81%AE%E5%90%88%E5%90%8C%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E4%BC%9A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0' target='_blank' rel='noopener noreferrer' class='tag-badge'>Oral</a><a href='https://scrapbox.io/KMHF-JRP/2024_%E5%A4%8F%E3%81%AE%E5%90%88%E5%90%8C%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E4%BC%9A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0' target='_blank' rel='noopener noreferrer' class='tag-badge'>Demo</a><a href='https://scrapbox.io/KMHF-JRP/2024_%E5%A4%8F%E3%81%AE%E5%90%88%E5%90%8C%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E4%BC%9A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0' target='_blank' rel='noopener noreferrer' class='tag-badge'>Poster</a></div>",
         sns_title: "SNS",
         gallery_title: "Gallery",
-        footer_text: "© 2025 山口 瑞悠 All Rights Reserved."
+        footer_text: "© 2026 山口 瑞悠 All Rights Reserved."
       }
     };
 
@@ -873,47 +968,5 @@
     });
   </script>
 
-  <script>
-    const defaultConfig = {
-      main_title: "山口 瑞悠",
-      subtitle: "エンタテインメント・HCI・音楽情報処理",
-      background_color: "#1e3a8a",
-      secondary_color: "#0ea5e9",
-      text_color: "#333333",
-      button_color: "#0ea5e9",
-      accent_color: "#ffffff",
-      font_family: "Hiragino Sans",
-      font_size: 16
-    };
-    async function onConfigChange(config) {
-      const backgroundColor = config.background_color || defaultConfig.background_color;
-      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
-      const textColor = config.text_color || defaultConfig.text_color;
-      const fontFamily = config.font_family || defaultConfig.font_family;
-      const fontSize = config.font_size || defaultConfig.font_size;
-      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${secondaryColor} 100%) fixed`;
-      const h1Elements = document.querySelectorAll('h1');
-      h1Elements.forEach(el => {
-        el.style.color = backgroundColor;
-        el.style.fontSize = `clamp(${fontSize * 3}px, 10vw, ${fontSize * 7}px)`;
-      });
-    }
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities: (config) => ({
-          recolorables: [
-            { get: () => config.background_color || defaultConfig.background_color, set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); } },
-            { get: () => config.secondary_color || defaultConfig.secondary_color, set: (value) => { config.secondary_color = value; window.elementSdk.setConfig({ secondary_color: value }); } }
-          ],
-          borderables: [],
-          fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); } },
-          fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); } }
-        }),
-        mapToEditPanelValues: (config) => new Map([ ["main_title", config.main_title || defaultConfig.main_title] ])
-      });
-    }
-  </script>
  </body>
 </html>

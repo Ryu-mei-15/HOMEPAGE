@@ -106,9 +106,64 @@
     }
 
     .section {
+      margin-bottom: 30px;
       padding: 60px 40px;
       border-radius: 15px;
       text-align: center;
+    }
+
+    .section h2 {
+      margin: 0 0 24px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #0ea5e9;
+      color: #1e3a8a;
+      font-size: 24px;
+    }
+
+    .award-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .award-card {
+      padding: 24px;
+      border: 1px solid #fde68a;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #fffbeb, #fff);
+    }
+
+    .award-card h3 {
+      margin: 0 0 12px;
+      color: #1e3a8a;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .award-card p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    .award-link {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 8px 14px;
+      border: 1px solid #1e3a8a;
+      border-radius: 16px;
+      color: #1e3a8a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .award-link:hover { background: #eff6ff; }
+
+    .award-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
     }
 
     .coming-soon {
@@ -136,8 +191,10 @@
     @media (max-width: 768px) {
       h1 { font-size: 23px; }
       .section { padding: 45px 20px; }
+      .award-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="../readability.css">
 </head>
 <body>
   <div class="floating-shapes" aria-hidden="true">
@@ -167,6 +224,24 @@
 
     <main>
       <section class="section">
+        <h2 data-i18n="awards_title">EC2026での表彰</h2>
+        <div class="award-grid">
+          <article class="award-card">
+            <h3 data-i18n="award_1_title">🏆 特選セッション発表認定</h3>
+            <p data-i18n="award_1_description">口頭発表に関するプログラム委員推薦賞</p>
+          </article>
+          <article class="award-card">
+            <h3 data-i18n="award_2_title">🏆 レコメンデモ認定</h3>
+            <p data-i18n="award_2_description">デモ・ポスター発表に関する専門委員推薦賞</p>
+          </article>
+        </div>
+        <div class="award-actions">
+          <a href="https://ec2026.entcomp.org/" target="_blank" rel="noopener noreferrer" class="award-link" data-i18n="ec2026_link">EC2026 公式サイトを見る ↗</a>
+          <a href="../NEWS/award_ec2026.html" class="award-link" data-i18n="award_link">表彰の詳細を見る ➡</a>
+        </div>
+      </section>
+
+      <section class="section">
         <p class="coming-soon">Coming Soon</p>
         <p class="coming-message" data-i18n="coming_message">詳細は今後公開予定です．</p>
       </section>
@@ -182,6 +257,13 @@
         back_btn: "⬅ Back to Home",
         header_title: "CatcherX",
         header_subtitle: "A VR Simulator Focusing on the Cycle of the Catcher's Perceptual–Motor Process",
+        awards_title: "EC2026 Recognitions",
+        award_1_title: "🏆 Selected Session Presentation Recognition",
+        award_1_description: "Program Committee Recommendation for Oral Presentation",
+        award_2_title: "🏆 Recommended Demo Recognition",
+        award_2_description: "Expert Committee Recommendation for Demo/Poster Presentation",
+        ec2026_link: "Visit the official EC2026 website ↗",
+        award_link: "View Recognition Details ➡",
         coming_message: "Details will be published at a later date.",
         footer_text: "© 2026 Miyu Yamaguchi All Rights Reserved."
       },
@@ -190,6 +272,13 @@
         back_btn: "⬅ トップページへ戻る",
         header_title: "CatcherX",
         header_subtitle: "捕手の認知-運動過程の循環に着目したVRシミュレータ",
+        awards_title: "EC2026での表彰",
+        award_1_title: "🏆 特選セッション発表認定",
+        award_1_description: "口頭発表に関するプログラム委員推薦賞",
+        award_2_title: "🏆 レコメンデモ認定",
+        award_2_description: "デモ・ポスター発表に関する専門委員推薦賞",
+        ec2026_link: "EC2026 公式サイトを見る ↗",
+        award_link: "表彰の詳細を見る ➡",
         coming_message: "詳細は今後公開予定です．",
         footer_text: "© 2026 山口 瑞悠 All Rights Reserved."
       }

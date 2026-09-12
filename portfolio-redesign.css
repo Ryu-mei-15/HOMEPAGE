@@ -411,6 +411,11 @@ main {
   background: transparent;
 }
 
+#news-section .news-list .pinned-item {
+  padding-right: 14px;
+  padding-left: 14px;
+}
+
 .pinned-icon {
   display: none;
 }

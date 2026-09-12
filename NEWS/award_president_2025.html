@@ -209,6 +209,7 @@
     }
   </style>
   <link rel="stylesheet" href="../readability.css">
+  <link rel="stylesheet" href="../detail-theme.css?v=20260912">
  </head>
  <body>
   <div class="floating-shapes">
@@ -224,7 +225,10 @@
       <button id="lang-en" class="lang-btn">EN</button>
     </div>
 
-    <a href="../index.html#awards-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
+    <nav class="back-nav" aria-label="ページナビゲーション">
+      <a href="../index.html#awards-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
+      <a href="../news.html" class="back-btn" data-i18n="news_list_btn">お知らせ一覧に戻る</a>
+    </nav>
     
     <header>
       <span class="news-tag award-tag" data-i18n="news_tag_award">Award</span>
@@ -277,6 +281,7 @@
       en: {
         page_title: "2025 President's Award - Miyu Yamaguchi",
         back_btn: "⬅ Back to Home",
+        news_list_btn: "Back to News",
         // タグと日付の英訳を追加
         news_tag_award: "Award",
         news_date_award: "May 12, 2026",
@@ -302,6 +307,7 @@
       ja: {
         page_title: "2025年度 学長褒章 受章 - 山口 瑞悠",
         back_btn: "⬅ トップページへ戻る",
+        news_list_btn: "お知らせ一覧に戻る",
         // タグと日付を追加
         news_tag_award: "Award",
         news_date_award: "2026.05.12",

@@ -195,6 +195,7 @@
     }
   </style>
   <link rel="stylesheet" href="../readability.css">
+  <link rel="stylesheet" href="../detail-theme.css?v=20260912">
 </head>
  <body>
   <div class="floating-shapes">
@@ -210,7 +211,10 @@
       <button id="lang-en" class="lang-btn">EN</button>
     </div>
 
-    <a href="../index.html#news-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
+    <nav class="back-nav" aria-label="ページナビゲーション">
+      <a href="../index.html#news-section" class="back-btn" data-i18n="back_btn">⬅ トップページへ戻る</a>
+      <a href="../news.html" class="back-btn" data-i18n="news_list_btn">お知らせ一覧に戻る</a>
+    </nav>
     
     <header>
       <span class="news-tag" data-i18n="news_tag">Media</span>
@@ -249,6 +253,7 @@
       en: {
         page_title: "Featured in 2027 Admission Guide - Miyu Yamaguchi",
         back_btn: "⬅ Back to Home",
+        news_list_btn: "Back to News",
         news_tag: "Media",
         news_date: "2026.05.15",
         header_title: "Featured as the Main Article in the<br>2027 University Admission Guide",
@@ -263,6 +268,7 @@
       ja: {
         page_title: "2027年度 入学案内パンフレット掲載 - 山口 瑞悠",
         back_btn: "⬅ トップページへ戻る",
+        news_list_btn: "お知らせ一覧に戻る",
         news_tag: "Media",
         news_date: "2026.05.15",
         header_title: "2027年度 入学案内パンフレットの<br>メイン記事として掲載されました",

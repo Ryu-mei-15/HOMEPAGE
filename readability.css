@@ -619,6 +619,42 @@ footer {
   color: rgba(255, 255, 255, 0.86);
 }
 
+/* Keep news content legible over the blue page background. */
+.news-list li {
+  color: #243b53 !important;
+  background: transparent;
+}
+
+.news-list .news-link {
+  color: #1e3a8a !important;
+  background: transparent;
+  text-decoration-color: rgba(30, 58, 138, 0.35);
+}
+
+.news-list .news-link:hover {
+  color: #0369a1 !important;
+}
+
+.news-list .news-date {
+  color: #52657a !important;
+}
+
+.news-list .news-tag {
+  color: #fff !important;
+}
+
+.news-list .pinned-item {
+  padding-right: 14px;
+  padding-left: 14px;
+  border-left: 4px solid #fbbf24 !important;
+  background: #fff8dc !important;
+}
+
+.pinned-icon {
+  display: inline-block !important;
+  color: #d97706;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
